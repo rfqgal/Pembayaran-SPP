@@ -48,6 +48,12 @@ if ($num > 0) {
   // Show Students Data in JSON Format
   echo json_decode($students);
 } else {
-  // No Products
+  // If no data
+  http_response_code(404);
+
+  // Tell the user
+  echo json_encode(
+    array("message" => "No data found :(")
+  );
 }
 ?>
