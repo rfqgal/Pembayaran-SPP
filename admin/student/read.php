@@ -33,10 +33,11 @@ if ($num > 0) {
       "nisn" => $nisn,
       "nis" => $nis,
       "nama" => $nama,
-      "id_kelas" => $id_kelas,
+      "nama_kelas" => $nama_kelas,
       "alamat" => html_entity_decode($alamat),
       "no_telp" => $no_telp,
-      "id_spp" => $id_spp
+      "tahun_spp" => $tahun,
+      "jumlah_spp" => $nominal
     );
 
     array_push($students['records'], $student_each);
@@ -46,7 +47,7 @@ if ($num > 0) {
   http_response_code(200);
 
   // Show Students Data in JSON Format
-  echo json_decode($students);
+  echo json_encode($students);
 } else {
   // If no data
   http_response_code(404);
