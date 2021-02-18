@@ -1,5 +1,6 @@
 <?php
-class Student {
+class Student
+{
   // Connection and Table Name
   private $conn;
   private $tb_name = "siswa";
@@ -19,7 +20,17 @@ class Student {
   }
 
   function read() {
-    # code...
+    // Select All Query
+    $query = "SELECT * FROM" . $this->tb_name . " 
+      INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
+      INNER JOIN spp ON siswa.id_spp = spp.id_spp";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Execute Query
+    $stmt->execute();
+
+    return $stmt;
   }
 }
-?>
