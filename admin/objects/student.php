@@ -146,4 +146,25 @@ class Student
     }
     return false;
   }
+
+  function delete()
+  {
+    // Delete Query
+    $query = "DELETE FROM siswa WHERE nisn = ?";
+
+    // Prepare Query
+    $stmt = $this->conn->prepare($query);
+
+    // Sanitize
+    $this->nisn = htmlspecialchars(strip_tags($this->nisn));
+    
+    // Bind ID of Record to Delete
+    $stmt->bindParam(1, $this->nisn);
+
+    // Execute Query
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
 }
