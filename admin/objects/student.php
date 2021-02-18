@@ -9,9 +9,12 @@ class Student
   public $nis;
   public $nama;
   public $id_kelas;
+  public $nama_kelas;
   public $alamat;
   public $no_telp;
   public $id_spp;
+  public $tahun_spp;
+  public $jumlah_spp;
 
   // Constructor with $db as DB Connection
   public function __construct($db)
@@ -67,5 +70,37 @@ class Student
       return true;
     }
     return false;
+  }
+
+  function readOne()
+  {
+    // Query to Read One
+    $query = "SELECT * FROM siswa
+      INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
+      INNER JOIN spp ON siswa.id_spp = spp.id_spp
+      WHERE siswa.nisn = ?
+      LIMIT 0,1";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Bind ID of Student to be Updated
+    $stmt->bindParam(1, $this->nisn);
+
+    // Execute Query
+    $stmt->execute();
+
+    // Get Retrieved Row
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Set Values to Object Props
+    $this->nisn = $row['nisn'];
+    $this->nis = $row['nis'];
+    $this->nama = $row['nama'];
+    $this->nama_kelas = $row['nama_kelas'];
+    $this->alamat = $row['alamat'];
+    $this->no_telp = $row['no_telp'];
+    $this->tahun_spp = $row['tahun'];
+    $this->jumlah_spp = $row['nominal'];
   }
 }
