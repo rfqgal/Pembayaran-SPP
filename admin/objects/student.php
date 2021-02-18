@@ -14,9 +14,12 @@ class Student {
   public $id_spp;
 
   // Constructor with $db as DB Connection
-  public function __contruct($db)
-  {
+  public function __contruct($db) {
     $this->conn = $db;
+  }
+
+  function read() {
+    # code...
   }
 }
 ?>
