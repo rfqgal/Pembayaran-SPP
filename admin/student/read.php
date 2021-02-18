@@ -29,7 +29,7 @@ if ($num > 0) {
     // Extract rows to make $row['name'] to just $name only
     extract($row);
 
-    $student_each = array(
+    $student_arr = array(
       "nisn" => $nisn,
       "nis" => $nis,
       "nama" => $nama,
@@ -40,7 +40,7 @@ if ($num > 0) {
       "jumlah_spp" => $nominal
     );
 
-    array_push($students['records'], $student_each);
+    array_push($students['records'], $student_arr);
   }
 
   // Set Response Code - 200 'OK'
