@@ -3,7 +3,6 @@ class Student
 {
   // Connection and Table Name
   private $conn;
-  private $tb_name = "siswa";
 
   // Object Props
   public $nisn;
@@ -15,13 +14,13 @@ class Student
   public $id_spp;
 
   // Constructor with $db as DB Connection
-  public function __contruct($db) {
+  public function __construct($db) {
     $this->conn = $db;
   }
 
   function read() {
     // Select All Query
-    $query = "SELECT * FROM" . $this->tb_name . " 
+    $query = "SELECT * FROM siswa
       INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
       INNER JOIN spp ON siswa.id_spp = spp.id_spp";
 
