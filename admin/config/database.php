@@ -1,5 +1,6 @@
 <?php
 class Database {
+  // Database Credentials
   private $host = "localhost";
   private $db_name = "pra-ukk";
   private $username = "root";
