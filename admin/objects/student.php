@@ -27,7 +27,8 @@ class Student
     // Select All Query
     $query = "SELECT * FROM siswa
       INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
-      INNER JOIN spp ON siswa.id_spp = spp.id_spp";
+      INNER JOIN spp ON siswa.id_spp = spp.id_spp
+    ";
 
     // Prepare Query Statement
     $stmt = $this->conn->prepare($query);
@@ -42,7 +43,9 @@ class Student
   {
     // Query Insert
     $query = "INSERT INTO siswa SET
-      nisn=:nisn, nis=:nis, nama=:nama, id_kelas=:id_kelas, alamat=:alamat, no_telp=:no_telp, id_spp=:id_spp";
+      nisn=:nisn, nis=:nis, nama=:nama, id_kelas=:id_kelas, 
+      alamat=:alamat, no_telp=:no_telp, id_spp=:id_spp
+    ";
 
     // Prepare Query
     $stmt = $this->conn->prepare($query);
@@ -79,7 +82,8 @@ class Student
       INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
       INNER JOIN spp ON siswa.id_spp = spp.id_spp
       WHERE siswa.nisn = ?
-      LIMIT 0,1";
+      LIMIT 0,1
+    ";
 
     // Prepare Query Statement
     $stmt = $this->conn->prepare($query);
@@ -102,5 +106,44 @@ class Student
     $this->no_telp = $row['no_telp'];
     $this->tahun_spp = $row['tahun'];
     $this->jumlah_spp = $row['nominal'];
+  }
+
+  function update()
+  {
+    // Update Query
+    $query = "UPDATE siswa SET
+      nis=:nis, nama=:nama, id_kelas=:id_kelas, 
+      alamat=:alamat, no_telp=:no_telp, id_spp=:id_spp
+      WHERE nisn=:nisn
+    ";
+    
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Sanitize
+    $this->nis = htmlspecialchars(strip_tags($this->nis));
+    $this->nama = htmlspecialchars(strip_tags($this->nama));
+    $this->id_kelas = htmlspecialchars(strip_tags($this->id_kelas));
+    $this->alamat = htmlspecialchars(strip_tags($this->alamat));
+    $this->no_telp = htmlspecialchars(strip_tags($this->no_telp));
+    $this->id_spp = htmlspecialchars(strip_tags($this->id_spp));
+    
+    $this->nisn = htmlspecialchars(strip_tags($this->nisn));
+
+    // Bind New Values
+    $stmt->bindParam(":nis", $this->nis);
+    $stmt->bindParam(":nama", $this->nama);
+    $stmt->bindParam(":id_kelas", $this->id_kelas);
+    $stmt->bindParam(":alamat", $this->alamat);
+    $stmt->bindParam(":no_telp", $this->no_telp);
+    $stmt->bindParam(":id_spp", $this->id_spp);
+
+    $stmt->bindParam(":nisn", $this->nisn);
+
+    // Execute Query
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
   }
 }
