@@ -44,8 +44,9 @@ if ($num > 0) {
   }
 
   // Include Paging
+  $object_url = "grade";
   $total_rows = $grade->count(); 
-  $page_url = "{$home_url}grade/read_paging.php?";
+  $page_url = "{$home_url}{$object_url}/read_paging.php?";
   $paging = $utilities->getPaging($page, $total_rows, $records_per_page, $page_url);
   $grades["paging"] = $paging;
   

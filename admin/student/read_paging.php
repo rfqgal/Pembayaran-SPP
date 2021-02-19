@@ -49,8 +49,9 @@ if ($num > 0) {
   }
 
   // Include Paging
+  $object_url = "student";
   $total_rows = $student->count(); 
-  $page_url = "{$home_url}student/read_paging.php?";
+  $page_url = "{$home_url}{$object_url}/read_paging.php?";
   $paging = $utilities->getPaging($page, $total_rows, $records_per_page, $page_url);
   $students["paging"] = $paging;
   
