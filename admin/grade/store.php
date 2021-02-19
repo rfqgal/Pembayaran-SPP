@@ -25,9 +25,9 @@ if (
   !empty($data->major)
 ) {
   // Set Object Props Values
-  $grade->id_kelas = $data->id;
-  $grade->nama_kelas = $data->grade;
-  $grade->kompetensi_keahlian = $data->major;
+  $grade->id = $data->id;
+  $grade->grade_name = $data->grade;
+  $grade->major = $data->major;
 
   // Create Student Account
   if ($grade->store()) {
