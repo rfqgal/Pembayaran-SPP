@@ -28,12 +28,12 @@ if ($student->nisn != null) {
   $student_arr = array(
     "nisn" => $student->nisn,
     "nis" => $student->nis,
-    "nama" => $student->nama,
-    "nama_kelas" => $student->nama_kelas,
-    "alamat" => $student->alamat,
-    "no_telp" => $student->no_telp,
-    "tahun_spp" => $student->tahun_spp,
-    "jumlah_spp" => $student->jumlah_spp
+    "nama" => $student->name,
+    "nama_kelas" => $student->grade_name,
+    "alamat" => $student->address,
+    "no_telp" => $student->phone,
+    "tuition_id" => $student->tuition_id,
+    "jumlah_spp" => $student->tuition_fee
   );
 
   // Set Response Code - 200 'OK'

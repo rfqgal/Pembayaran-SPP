@@ -25,11 +25,11 @@ $student->nisn = $data->nisn;
 
 // Set Student's Props Values
 $student->nis = $data->nis;
-$student->nama = $data->nama;
-$student->id_kelas = $data->id_kelas;
-$student->alamat = $data->alamat;
-$student->no_telp = $data->no_telp;
-$student->id_spp = $data->id_spp;
+$student->name = $data->name;
+$student->grade_id = $data->grade_id;
+$student->address = $data->address;
+$student->phone = $data->phone;
+$student->tuition_id = $data->tuition_id;
 
 // Update Students Data
 if ($student->update()) {

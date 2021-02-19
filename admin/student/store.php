@@ -22,20 +22,20 @@ $data = json_decode(file_get_contents("php://input"));
 if (
   !empty($data->nisn) &&
   !empty($data->nis) &&
-  !empty($data->nama) &&
-  !empty($data->id_kelas) &&
-  !empty($data->alamat) &&
-  !empty($data->no_telp) &&
-  !empty($data->id_spp)
+  !empty($data->name) &&
+  !empty($data->grade_id) &&
+  !empty($data->address) &&
+  !empty($data->phone) &&
+  !empty($data->tuition_id)
 ) {
   // Set Object Props Values
   $student->nisn = $data->nisn;
   $student->nis = $data->nis;
-  $student->nama = $data->nama;
-  $student->id_kelas = $data->id_kelas;
-  $student->alamat = $data->alamat;
-  $student->no_telp = $data->no_telp;
-  $student->id_spp = $data->id_spp;
+  $student->name = $data->name;
+  $student->grade_id = $data->grade_id;
+  $student->address = $data->address;
+  $student->phone = $data->phone;
+  $student->tuition_id = $data->tuition_id;
 
   // Create Student Account
   if ($student->store()) {

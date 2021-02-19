@@ -32,12 +32,12 @@ if ($num > 0) {
     $student_arr = array(
       "nisn" => $nisn,
       "nis" => $nis,
-      "nama" => $nama,
-      "nama_kelas" => $nama_kelas,
-      "alamat" => html_entity_decode($alamat),
-      "no_telp" => $no_telp,
-      "tahun_spp" => $tahun,
-      "jumlah_spp" => $nominal
+      "name" => $nama,
+      "grade" => $nama_kelas,
+      "address" => html_entity_decode($alamat),
+      "phone" => $no_telp,
+      "tuition_id" => $id_spp,
+      "tuition" => $nominal
     );
 
     array_push($students['records'], $student_arr);

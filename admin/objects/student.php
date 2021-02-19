@@ -7,14 +7,14 @@ class Student
   // Object Props
   public $nisn;
   public $nis;
-  public $nama;
-  public $id_kelas;
-  public $nama_kelas;
-  public $alamat;
-  public $no_telp;
-  public $id_spp;
-  public $tahun_spp;
-  public $jumlah_spp;
+  public $name;
+  public $grade_id;
+  public $grade_name;
+  public $address;
+  public $phone;
+  public $tuition_id;
+  public $tuition_year;
+  public $tuition_fee;
 
   // Constructor with $db as DB Connection
   public function __construct($db)
@@ -53,20 +53,20 @@ class Student
     // Sanitize
     $this->nisn = htmlspecialchars(strip_tags($this->nisn));
     $this->nis = htmlspecialchars(strip_tags($this->nis));
-    $this->nama = htmlspecialchars(strip_tags($this->nama));
-    $this->id_kelas = htmlspecialchars(strip_tags($this->id_kelas));
-    $this->alamat = htmlspecialchars(strip_tags($this->alamat));
-    $this->no_telp = htmlspecialchars(strip_tags($this->no_telp));
-    $this->id_spp = htmlspecialchars(strip_tags($this->id_spp));
+    $this->name = htmlspecialchars(strip_tags($this->name));
+    $this->grade_id = htmlspecialchars(strip_tags($this->grade_id));
+    $this->address = htmlspecialchars(strip_tags($this->address));
+    $this->phone = htmlspecialchars(strip_tags($this->phone));
+    $this->tuition_id = htmlspecialchars(strip_tags($this->tuition_id));
 
     // Bind Values
     $stmt->bindParam(":nisn", $this->nisn);
     $stmt->bindParam(":nis", $this->nis);
-    $stmt->bindParam(":nama", $this->nama);
-    $stmt->bindParam(":id_kelas", $this->id_kelas);
-    $stmt->bindParam(":alamat", $this->alamat);
-    $stmt->bindParam(":no_telp", $this->no_telp);
-    $stmt->bindParam(":id_spp", $this->id_spp);
+    $stmt->bindParam(":nama", $this->name);
+    $stmt->bindParam(":id_kelas", $this->grade_id);
+    $stmt->bindParam(":alamat", $this->address);
+    $stmt->bindParam(":no_telp", $this->phone);
+    $stmt->bindParam(":id_spp", $this->tuition_id);
 
     // Execute Query
     if ($stmt->execute()) {
@@ -100,12 +100,12 @@ class Student
     // Set Values to Object Props
     $this->nisn = $row['nisn'];
     $this->nis = $row['nis'];
-    $this->nama = $row['nama'];
-    $this->nama_kelas = $row['nama_kelas'];
-    $this->alamat = $row['alamat'];
-    $this->no_telp = $row['no_telp'];
-    $this->tahun_spp = $row['tahun'];
-    $this->jumlah_spp = $row['nominal'];
+    $this->name = $row['nama'];
+    $this->grade_name = $row['nama_kelas'];
+    $this->address = $row['alamat'];
+    $this->phone = $row['no_telp'];
+    $this->tuition_id = $row['id_spp'];
+    $this->tuition_fee = $row['nominal'];
   }
 
   function update()
@@ -122,21 +122,21 @@ class Student
 
     // Sanitize
     $this->nis = htmlspecialchars(strip_tags($this->nis));
-    $this->nama = htmlspecialchars(strip_tags($this->nama));
-    $this->id_kelas = htmlspecialchars(strip_tags($this->id_kelas));
-    $this->alamat = htmlspecialchars(strip_tags($this->alamat));
-    $this->no_telp = htmlspecialchars(strip_tags($this->no_telp));
-    $this->id_spp = htmlspecialchars(strip_tags($this->id_spp));
+    $this->name = htmlspecialchars(strip_tags($this->name));
+    $this->grade_id = htmlspecialchars(strip_tags($this->grade_id));
+    $this->address = htmlspecialchars(strip_tags($this->address));
+    $this->phone = htmlspecialchars(strip_tags($this->phone));
+    $this->tuition_id = htmlspecialchars(strip_tags($this->tuition_id));
     
     $this->nisn = htmlspecialchars(strip_tags($this->nisn));
 
     // Bind New Values
     $stmt->bindParam(":nis", $this->nis);
-    $stmt->bindParam(":nama", $this->nama);
-    $stmt->bindParam(":id_kelas", $this->id_kelas);
-    $stmt->bindParam(":alamat", $this->alamat);
-    $stmt->bindParam(":no_telp", $this->no_telp);
-    $stmt->bindParam(":id_spp", $this->id_spp);
+    $stmt->bindParam(":nama", $this->name);
+    $stmt->bindParam(":id_kelas", $this->grade_id);
+    $stmt->bindParam(":alamat", $this->address);
+    $stmt->bindParam(":no_telp", $this->phone);
+    $stmt->bindParam(":id_spp", $this->tuition_id);
 
     $stmt->bindParam(":nisn", $this->nisn);
 
