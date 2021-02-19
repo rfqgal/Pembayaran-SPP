@@ -43,3 +43,12 @@
   "no_telp": "081234567899",
   "id_spp": "1234"
 }
+{
+  "nisn": "2234567806",
+  "nis": "6",
+  "name": "Bayu",
+  "grade_id": "1",
+  "address": "Gatau",
+  "phone": "081234567899",
+  "tuition_id": "1234"
+}
