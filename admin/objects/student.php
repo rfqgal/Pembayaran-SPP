@@ -167,4 +167,30 @@ class Student
     }
     return false;
   }
+
+  function search($keywords)
+  {
+    // Query Read
+    $query = "SELECT * FROM siswa
+      INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
+      INNER JOIN spp ON siswa.id_spp = spp.id_spp
+      WHERE siswa.nama LIKE ? OR kelas.nama_kelas LIKE ?
+    ";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Sanitize
+    $keywords = htmlspecialchars(strip_tags($keywords));
+    $keywords = "%$keywords%";
+
+    // Bind
+    $stmt->bindParam(1, $keywords);
+    $stmt->bindParam(2, $keywords);
+
+    // Execute Query
+    $stmt->execute();
+
+    return $stmt;
+  }
 }
