@@ -193,4 +193,38 @@ class Student
 
     return $stmt;
   }
+
+  public function readPaging($from_record_num, $records_per_page)
+  {
+    // Select Query
+    $query = "SELECT * FROM siswa
+      INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
+      INNER JOIN spp ON siswa.id_spp = spp.id_spp
+      LIMIT ?, ?
+    ";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Bind Variable Values
+    $stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
+    $stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
+
+    // Execute Query
+    $stmt->execute();
+
+    // Return Values from DB
+    return $stmt;
+  }
+
+  public function count()
+  {
+    $query = "SELECT COUNT(*) as total_rows FROM siswa";
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $row['total_rows'];
+  }
 }
