@@ -112,4 +112,25 @@ class Grade
     }
     return false;
   }
+
+  function delete()
+  {
+    // Delete Query
+    $query = "DELETE FROM kelas WHERE id_kelas = ?";
+
+    // Prepare Query
+    $stmt = $this->conn->prepare($query);
+
+    // Sanitize
+    $this->id = htmlspecialchars(strip_tags($this->id));
+    
+    // Bind ID of Record to Delete
+    $stmt->bindParam(1, $this->id);
+
+    // Execute Query
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
 }
