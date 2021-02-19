@@ -5,9 +5,9 @@ class Grade
   private $conn;
 
   // Object Props
-  public $id_kelas;
-  public $nama_kelas;
-  public $kompetensi_keahlian;
+  public $id;
+  public $grade_name;
+  public $major;
 
   // Constructor with $db as DB Connection
   public function __construct($db)
@@ -40,19 +40,45 @@ class Grade
     $stmt = $this->conn->prepare($query);
 
     // Sanitize
-    $this->id_kelas = htmlspecialchars(strip_tags($this->id_kelas));
-    $this->nama_kelas = htmlspecialchars(strip_tags($this->nama_kelas));
-    $this->kompetensi_keahlian = htmlspecialchars(strip_tags($this->kompetensi_keahlian));
+    $this->id = htmlspecialchars(strip_tags($this->id));
+    $this->grade_name = htmlspecialchars(strip_tags($this->grade_name));
+    $this->major = htmlspecialchars(strip_tags($this->major));
 
     // Bind Values
-    $stmt->bindParam(":id_kelas", $this->id_kelas);
-    $stmt->bindParam(":nama_kelas", $this->nama_kelas);
-    $stmt->bindParam(":kompetensi_keahlian", $this->kompetensi_keahlian);
+    $stmt->bindParam(":id_kelas", $this->id);
+    $stmt->bindParam(":nama_kelas", $this->grade_name);
+    $stmt->bindParam(":kompetensi_keahlian", $this->major);
 
     // Execute Query
     if ($stmt->execute()) {
       return true;
     }
     return false;
+  }
+
+  function readOne()
+  {
+    // Query to Read One
+    $query = "SELECT * FROM kelas
+      WHERE id_kelas = ?
+      LIMIT 0,1
+    ";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Bind ID of Grade to be Updated
+    $stmt->bindParam(1, $this->id);
+
+    // Execute Query
+    $stmt->execute();
+
+    // Get Retrieved Row
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Set Values to Object Props
+    $this->id = $row['id_kelas'];
+    $this->grade_name = $row['nama_kelas'];
+    $this->major = $row['kompetensi_keahlian'];
   }
 }
