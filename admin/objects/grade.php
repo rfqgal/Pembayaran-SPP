@@ -85,8 +85,8 @@ class Grade
   function update()
   {
     // Update Query
-    $query = "UPDATE kelas SET
-      id_kelas=:id_kelas, nama_kelas=:nama_kelas, 
+    $query = "UPDATE kelas SET 
+      nama_kelas=:nama_kelas, 
       kompetensi_keahlian=:kompetensi_keahlian
       WHERE id_kelas=:id_kelas
     ";
