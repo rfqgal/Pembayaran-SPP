@@ -14,7 +14,7 @@ $db = $database->getConnection();
 // Initialize Object
 $grade = new Grade($db);
 
-// Student's Query
+// Object's Query
 $stmt = $grade->read();
 $num = $stmt->rowCount();
 
