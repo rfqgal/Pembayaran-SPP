@@ -6,8 +6,10 @@ class Administrator
 
   // Object Props
   public $id;
-  public $year;
-  public $fee;
+  public $username;
+  public $password;
+  public $name;
+  public $level;
 
   // Constructor with $db as DB Connection
   public function __construct($db)
