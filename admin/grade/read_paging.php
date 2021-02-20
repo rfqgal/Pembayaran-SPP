@@ -60,5 +60,5 @@ if ($num > 0) {
   http_response_code(404);
 
   // Tell the User
-  echo json_encode(array("message" => "Akun tidak ditemukan!"));
+  echo json_encode(array("message" => "Kelas tidak ditemukan!"));
 }
