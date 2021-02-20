@@ -55,4 +55,30 @@ class Tuition
     }
     return false;
   }
+
+  function readOne()
+  {
+    // Query to Read One
+    $query = "SELECT * FROM spp
+      WHERE id_spp = ?
+      LIMIT 0,1
+    ";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Bind ID of Grade to be Updated
+    $stmt->bindParam(1, $this->id);
+
+    // Execute Query
+    $stmt->execute();
+
+    // Get Retrieved Row
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Set Values to Object Props
+    $this->id = $row['id_spp'];
+    $this->year = $row['tahun'];
+    $this->fee = $row['nominal'];
+  }
 }
