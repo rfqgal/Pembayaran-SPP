@@ -79,4 +79,41 @@ class Payment
     }
     return false;
   }
+
+  function readOne()
+  {
+    // Query to Read One
+    $query = "SELECT * FROM pembayaran
+      INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
+      INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
+      INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
+      WHERE id_pembayaran = ?
+      LIMIT 0,1
+    ";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Bind ID of Grade to be Updated
+    $stmt->bindParam(1, $this->payment_id);
+
+    // Execute Query
+    $stmt->execute();
+
+    // Get Retrieved Row
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Set Values to Object Props
+    $this->payment_id = $row['id_pembayaran'];
+    $this->administrator_id = $row['id_petugas'];
+    $this->administrator_name = $row['nama_petugas'];
+    $this->nisn = $row['nisn'];
+    $this->student_name = $row['nama'];
+    $this->payment_date = $row['tgl_bayar'];
+    $this->payment_month = $row['bulan_dibayar'];
+    $this->payment_year = $row['tahun_dibayar'];
+    $this->tuition_id = $row['id_spp'];
+    $this->tuition_fee = $row['nominal'];
+    $this->payment_total = $row['jumlah_bayar'];
+  }
 }
