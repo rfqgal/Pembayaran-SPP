@@ -146,4 +146,29 @@ class Administrator
     }
     return false;
   }
+
+  function search($keywords)
+  {
+    // Query Read
+    $query = "SELECT * FROM petugas
+      WHERE username LIKE ? OR nama_petugas LIKE ? OR level LIKE ?
+    ";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Sanitize
+    $keywords = htmlspecialchars(strip_tags($keywords));
+    $keywords = "%$keywords%";
+
+    // Bind
+    $stmt->bindParam(1, $keywords);
+    $stmt->bindParam(2, $keywords);
+    $stmt->bindParam(3, $keywords);
+
+    // Execute Query
+    $stmt->execute();
+
+    return $stmt;
+  }
 }
