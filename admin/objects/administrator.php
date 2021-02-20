@@ -90,4 +90,39 @@ class Administrator
     $this->name = $row['nama_petugas'];
     $this->level = $row['level'];
   }
+
+  function update()
+  {
+    // Update Query
+    $query = "UPDATE petugas SET
+      username=:username, password=:password,
+      nama_petugas=:nama_petugas, level=:level
+      WHERE id_petugas=:id_petugas
+    ";
+    
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Sanitize
+    $this->username = htmlspecialchars(strip_tags($this->username));
+    $this->password = htmlspecialchars(strip_tags($this->password));
+    $this->name = htmlspecialchars(strip_tags($this->name));
+    $this->level = htmlspecialchars(strip_tags($this->level));
+    
+    $this->id = htmlspecialchars(strip_tags($this->id));
+
+    // Bind New Values
+    $stmt->bindParam(":username", $this->username);
+    $stmt->bindParam(":password", $this->password);
+    $stmt->bindParam(":nama_petugas", $this->name);
+    $stmt->bindParam(":level", $this->level);
+
+    $stmt->bindParam(":id_petugas", $this->id);
+
+    // Execute Query
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
 }
