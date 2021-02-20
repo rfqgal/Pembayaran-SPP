@@ -20,7 +20,7 @@ $num = $stmt->rowCount();
 
 // Check Rows Count
 if ($num > 0) {
-  // Students Array
+  // Object's Array
   $grades = array();
   $grades['records'] = array();
 
@@ -41,7 +41,7 @@ if ($num > 0) {
   // Set Response Code - 200 'OK'
   http_response_code(200);
 
-  // Show Students Data in JSON Format
+  // Show Object's Data in JSON Format
   echo json_encode($grades);
 } else {
   // If no data
