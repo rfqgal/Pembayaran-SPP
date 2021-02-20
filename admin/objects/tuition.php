@@ -81,4 +81,34 @@ class Tuition
     $this->year = $row['tahun'];
     $this->fee = $row['nominal'];
   }
+
+  function update()
+  {
+    // Update Query
+    $query = "UPDATE spp SET
+      tahun=:tahun, nominal=:nominal
+      WHERE id_spp=:id_spp
+    ";
+    
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Sanitize
+    $this->year = htmlspecialchars(strip_tags($this->year));
+    $this->fee = htmlspecialchars(strip_tags($this->fee));
+    
+    $this->id = htmlspecialchars(strip_tags($this->id));
+
+    // Bind New Values
+    $stmt->bindParam(":tahun", $this->year);
+    $stmt->bindParam(":nominal", $this->fee);
+
+    $stmt->bindParam(":id_spp", $this->id);
+
+    // Execute Query
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
 }
