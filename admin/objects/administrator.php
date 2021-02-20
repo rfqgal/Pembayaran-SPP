@@ -62,4 +62,32 @@ class Administrator
     }
     return false;
   }
+
+  function readOne()
+  {
+    // Query to Read One
+    $query = "SELECT * FROM petugas
+      WHERE id_petugas = ?
+      LIMIT 0,1
+    ";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Bind ID of Grade to be Updated
+    $stmt->bindParam(1, $this->id);
+
+    // Execute Query
+    $stmt->execute();
+
+    // Get Retrieved Row
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Set Values to Object Props
+    $this->id = $row['id_petugas'];
+    $this->username = $row['username'];
+    $this->password = $row['password'];
+    $this->name = $row['nama_petugas'];
+    $this->level = $row['level'];
+  }
 }
