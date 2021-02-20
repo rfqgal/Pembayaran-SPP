@@ -30,4 +30,36 @@ class Administrator
 
     return $stmt;
   }
+
+  function store()
+  {
+    // Query Insert
+    $query = "INSERT INTO petugas SET
+      id_petugas=:id_petugas, username=:username, password=:password,
+      nama_petugas=:nama_petugas, level=:level
+    ";
+
+    // Prepare Query
+    $stmt = $this->conn->prepare($query);
+
+    // Sanitize
+    $this->id = htmlspecialchars(strip_tags($this->id));
+    $this->username = htmlspecialchars(strip_tags($this->username));
+    $this->password = htmlspecialchars(strip_tags(md5($this->password)));
+    $this->name = htmlspecialchars(strip_tags($this->name));
+    $this->level = htmlspecialchars(strip_tags($this->level));
+
+    // Bind Values
+    $stmt->bindParam(":id_petugas", $this->id);
+    $stmt->bindParam(":username", $this->username);
+    $stmt->bindParam(":password", $this->password);
+    $stmt->bindParam(":nama_petugas", $this->name);
+    $stmt->bindParam(":level", $this->level);
+
+    // Execute Query
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
 }
