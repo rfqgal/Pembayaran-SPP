@@ -158,4 +158,25 @@ class Payment
     }
     return false;
   }
+
+  function delete()
+  {
+    // Delete Query
+    $query = "DELETE FROM pembayaran WHERE id_pembayaran = ?";
+
+    // Prepare Query
+    $stmt = $this->conn->prepare($query);
+
+    // Sanitize
+    $this->payment_id = htmlspecialchars(strip_tags($this->payment_id));
+    
+    // Bind ID of Record to Delete
+    $stmt->bindParam(1, $this->payment_id);
+
+    // Execute Query
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
 }
