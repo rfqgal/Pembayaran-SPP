@@ -209,4 +209,39 @@ class Payment
 
     return $stmt;
   }
+
+  public function readPaging($from_record_num, $records_per_page)
+  {
+    // Select Query
+    $query = "SELECT * FROM pembayaran
+      INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
+      INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
+      INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
+      LIMIT ?, ?
+    ";
+
+    // Prepare Query Statement
+    $stmt = $this->conn->prepare($query);
+
+    // Bind Variable Values
+    $stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
+    $stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
+
+    // Execute Query
+    $stmt->execute();
+
+    // Return Values from DB
+    return $stmt;
+  }
+
+  public function count()
+  {
+    $query = "SELECT COUNT(*) as total_rows FROM pembayaran";
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $row['total_rows'];
+  }
 }
