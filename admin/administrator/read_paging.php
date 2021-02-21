@@ -62,5 +62,5 @@ if ($num > 0) {
   http_response_code(404);
 
   // Tell the User
-  echo json_encode(array("message" => "SPP tidak ditemukan!"));
+  echo json_encode(array("message" => "Petugas tidak ditemukan!"));
 }
