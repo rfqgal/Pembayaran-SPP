@@ -37,11 +37,10 @@ if ($num > 0) {
       "nisn" => $nisn,
       "nis" => $nis,
       "name" => $nama,
-      "grade_name" => $nama_kelas,
+      "grade" => $nama_kelas,
       "address" => html_entity_decode($alamat),
       "phone" => $no_telp,
-      "tuition_id" => $id_spp,
-      "tuition_fee" => $nominal
+      "tuition" => $nominal
     );
 
     array_push($students["records"], $student_arr);
