@@ -187,7 +187,7 @@ class Payment
       INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
       INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
       INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
-      WHERE nama_petugas LIKE ? OR nama LIKE ? 
+      WHERE nama_petugas LIKE ? OR siswa.nisn LIKE ? OR nama LIKE ? 
       OR bulan_dibayar LIKE ? OR tahun_dibayar LIKE ? 
     ";
 
@@ -203,6 +203,7 @@ class Payment
     $stmt->bindParam(2, $keywords);
     $stmt->bindParam(3, $keywords);
     $stmt->bindParam(4, $keywords);
+    $stmt->bindParam(5, $keywords);
 
     // Execute Query
     $stmt->execute();
