@@ -174,7 +174,8 @@ class Student
     $query = "SELECT * FROM siswa
       INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
       INNER JOIN spp ON siswa.id_spp = spp.id_spp
-      WHERE siswa.nama LIKE ? OR kelas.nama_kelas LIKE ?
+      WHERE siswa.nisn LIKE ? OR siswa.nis LIKE ?
+      OR siswa.nama LIKE ? OR kelas.nama_kelas LIKE ?
     ";
 
     // Prepare Query Statement
@@ -187,6 +188,8 @@ class Student
     // Bind
     $stmt->bindParam(1, $keywords);
     $stmt->bindParam(2, $keywords);
+    $stmt->bindParam(3, $keywords);
+    $stmt->bindParam(4, $keywords);
 
     // Execute Query
     $stmt->execute();
