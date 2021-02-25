@@ -22,7 +22,6 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (
   !empty($data->username) &&
-  !empty($data->password) &&
   !empty($data->name) &&
   !empty($data->level)
 ) {
@@ -31,7 +30,7 @@ if (
 
   // Set Object's Props Values
   $administrator->username = $data->username;
-  $administrator->password = md5($data->password);
+  $administrator->password = $data->password;
   $administrator->name = $data->name;
   $administrator->level = $data->level;
 
