@@ -20,14 +20,12 @@ $data = json_decode(file_get_contents("php://input"));
 
 // Make sure data is not empty!
 if (
-  !empty($data->id) &&
   !empty($data->username) &&
   !empty($data->password) &&
   !empty($data->name) &&
   !empty($data->level) 
 ) {
   // Set Object Props Values
-  $administrator->id = $data->id;
   $administrator->username = $data->username;
   $administrator->password = $data->password;
   $administrator->name = $data->name;
