@@ -28,9 +28,9 @@ const read = () => {
               <img src="../../assets/img/button-edit.svg" alt="Edit">
             </button>
           </a>
-          <button onclick="confirmation(
-            drop(${object.id}), 
-            'Apakah Anda yakin ingin menghapus akun ${object.name}?'
+          <button onclick="confirmDelete(
+            ${object.id}, 
+            'Apakah Anda yakin ingin menghapus Kelas ${object.name}?'
             )" class="danger img">
             <img src="../../assets/img/button-delete.svg" alt="Delete">
           </button>

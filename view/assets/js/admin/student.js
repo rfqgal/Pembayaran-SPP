@@ -23,10 +23,11 @@ const read = () => {
               <img src="../../assets/img/button-edit.svg" alt="Edit">
             </button>
           </a>
-          <button class="danger img">
-            <a href="./delete.php?nisn=${object.nisn}">
-              <img src="../../assets/img/button-delete.svg" alt="Delete">
-            </a>
+          <button onclick="confirmDelete(
+            ${object.id}, 
+            'Apakah Anda yakin ingin menghapus akun ${object.name}?'
+            )" class="danger img">
+            <img src="../../assets/img/button-delete.svg" alt="Delete">
           </button>
         </td>
       </tr>
