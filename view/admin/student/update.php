@@ -31,7 +31,7 @@ $id = $_GET['nisn'];
       </a>
     </header>
     <section class="mt-32">
-      <a class="flex links" href="<?= $index_admin_student ?>">
+      <a class="flex links active" href="<?= $index_admin_student ?>">
         <img src="<?= $img ?>/student-white.svg" alt="">
         <span>Manajemen Siswa</span>
       </a>
@@ -39,7 +39,7 @@ $id = $_GET['nisn'];
         <img src="<?= $img ?>/grade-white.svg" alt="">
         <span>Manajemen Kelas</span>
       </a>
-      <a class="flex links active" href="<?= $index_admin_administrator ?>">
+      <a class="flex links" href="<?= $index_admin_administrator ?>">
         <img src="<?= $img ?>/admin-white.svg" alt="">
         <span>Manajemen Petugas</span>
       </a>

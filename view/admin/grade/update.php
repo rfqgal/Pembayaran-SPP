@@ -35,11 +35,11 @@ $id = $_GET['id'];
         <img src="<?= $img ?>/student-white.svg" alt="">
         <span>Manajemen Siswa</span>
       </a>
-      <a class="flex links" href="<?= $index_admin_grade ?>">
+      <a class="flex links active" href="<?= $index_admin_grade ?>">
         <img src="<?= $img ?>/grade-white.svg" alt="">
         <span>Manajemen Kelas</span>
       </a>
-      <a class="flex links active" href="<?= $index_admin_administrator ?>">
+      <a class="flex links" href="<?= $index_admin_administrator ?>">
         <img src="<?= $img ?>/admin-white.svg" alt="">
         <span>Manajemen Petugas</span>
       </a>
