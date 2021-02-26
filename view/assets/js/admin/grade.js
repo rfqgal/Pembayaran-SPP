@@ -30,7 +30,7 @@ const read = () => {
           </a>
           <button onclick="confirmDelete(
             ${object.id}, 
-            'Apakah Anda yakin ingin menghapus Kelas ${object.name}?'
+            'Apakah Anda yakin ingin menghapus Kelas ${object.grade} ${object.major} ${object.alma_mater}?'
             )" class="danger img">
             <img src="../../assets/img/button-delete.svg" alt="Delete">
           </button>
