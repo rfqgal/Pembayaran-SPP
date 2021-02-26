@@ -1,3 +1,5 @@
+const baseLink = "http://localhost/Pembayaran-SPP/app/student";
+
 const read = () => {
   let input = document.getElementById("search");
   let find = input.value.toLowerCase();
@@ -34,6 +36,104 @@ const read = () => {
     `;
     })
   });
-  xhr.open("GET", `http://localhost/Pembayaran-SPP/app/student/search.php?search=${find}`);
+  xhr.open("GET", `${baseLink}/search.php?search=${find}`);
   xhr.send();
+}
+
+const create = () => {
+  let inputNisn = document.getElementById("nisn").value;
+  let inputNis = document.getElementById("nis").value;
+  let inputName = capitalizeFirstLetter(document.getElementById("name").value.toLowerCase());
+  let nameWithNoDigits = inputName.replace(/[0-9]/g, '');
+  let inputKelas = document.getElementById("grade").value.toUpperCase();
+  let inputAddress = document.getElementById("address").value;
+  let inputPhone = document.getElementById("phone").value;
+  let inputTuition = document.getElementById("tuition").value;
+
+  const object = {
+    name: nameWithNoDigits,
+    username: inputUsername,
+    password: inputPassword,
+    level: inputLevel
+  }
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${baseLink}/create.php`);
+
+  xhr.send(JSON.stringify(object));
+  xhr.addEventListener("load", () => {
+    if (xhr.status === 201) {
+      alert('Akun petugas telah dibuat!');
+      window.location.href = "./index.php";
+    } else {
+      alert('Akun petugas gagal dibuat!');
+    }
+  });
+}
+
+const get = (objectId) => {
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", () => {
+    const responseJson = JSON.parse(xhr.responseText);
+
+    responseJson.records.forEach(object => {
+      if (object.nisn == objectId) {
+        document.getElementById("nisn").value = object.nisn;
+        document.getElementById("nis").value = object.nis;
+        document.getElementById("name").value = object.name;
+        document.getElementById("address").value = object.address;
+        document.getElementById("level").value = object.level;
+      }
+    })
+  });
+  xhr.open("GET", `${baseLink}/read.php`);
+  xhr.send();
+}
+
+const update = (objectId) => {
+  let inputName = capitalizeFirstLetter(document.getElementById("name").value.toLowerCase());
+  let nameWithNoDigits = inputName.replace(/[0-9]/g, '');
+  let inputUsername = document.getElementById("username").value.toLowerCase();
+  let inputPassword = document.getElementById("password").value;
+  let inputLevel = document.getElementById("level").value;
+
+  const object = {
+    id: objectId,
+    name: nameWithNoDigits,
+    username: inputUsername,
+    password: inputPassword,
+    level: inputLevel
+  }
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${baseLink}/update.php`);
+
+  xhr.send(JSON.stringify(object));
+  xhr.addEventListener("load", () => {
+    if (xhr.status === 200) {
+      alert('Akun petugas telah diupdate!');
+      window.location.href = "./index.php";
+    } else {
+      alert('Akun petugas gagal diupdate!');
+    }
+  });
+}
+
+const drop = (objectId) => {
+  const object = {
+    id: objectId
+  }
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${baseLink}/delete.php`);
+
+  xhr.send(JSON.stringify(object));
+  xhr.addEventListener("load", () => {
+    if (xhr.status === 200) {
+      alert('Akun petugas telah dihapus!');
+      window.location.reload();
+    } else {
+      alert('Akun petugas gagal dihapus!');
+    }
+  });
 }
