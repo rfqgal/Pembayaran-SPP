@@ -26,7 +26,7 @@ const read = () => {
             </button>
           </a>
           <button onclick="confirmDelete(
-            ${object.id}, 
+            ${object.nisn}, 
             'Apakah Anda yakin ingin menghapus akun ${object.name}?'
             )" class="danger img">
             <img src="../../assets/img/button-delete.svg" alt="Delete">
@@ -45,16 +45,19 @@ const create = () => {
   let inputNis = document.getElementById("nis").value;
   let inputName = capitalizeFirstLetter(document.getElementById("name").value.toLowerCase());
   let nameWithNoDigits = inputName.replace(/[0-9]/g, '');
-  let inputKelas = document.getElementById("grade").value.toUpperCase();
-  let inputAddress = document.getElementById("address").value;
+  let inputGradeId = document.getElementById("grade").value.toUpperCase();
+  let inputAddress = capitalizeFirstLetter(document.getElementById("address").value);
   let inputPhone = document.getElementById("phone").value;
-  let inputTuition = document.getElementById("tuition").value;
+  let inputTuitionId = document.getElementById("tuition").value;
 
   const object = {
+    nisn: inputNisn,
+    nis: inputNis,
     name: nameWithNoDigits,
-    username: inputUsername,
-    password: inputPassword,
-    level: inputLevel
+    grade_id: inputGradeId,
+    address: inputAddress,
+    phone: inputPhone,
+    tuition_id: inputTuitionId
   }
 
   let xhr = new XMLHttpRequest();
@@ -63,10 +66,10 @@ const create = () => {
   xhr.send(JSON.stringify(object));
   xhr.addEventListener("load", () => {
     if (xhr.status === 201) {
-      alert('Akun petugas telah dibuat!');
+      alert('Akun siswa telah dibuat!');
       window.location.href = "./index.php";
     } else {
-      alert('Akun petugas gagal dibuat!');
+      alert('Akun siswa gagal dibuat!');
     }
   });
 }
@@ -81,28 +84,34 @@ const get = (objectId) => {
         document.getElementById("nisn").value = object.nisn;
         document.getElementById("nis").value = object.nis;
         document.getElementById("name").value = object.name;
+        document.getElementById("grade").value = object.grade_id;
         document.getElementById("address").value = object.address;
-        document.getElementById("level").value = object.level;
+        document.getElementById("phone").value = object.phone;
+        document.getElementById("tuition").value = object.tuition_id;
       }
-    })
+    });
   });
   xhr.open("GET", `${baseLink}/read.php`);
   xhr.send();
 }
 
 const update = (objectId) => {
+  let inputNis = document.getElementById("nis").value;
   let inputName = capitalizeFirstLetter(document.getElementById("name").value.toLowerCase());
   let nameWithNoDigits = inputName.replace(/[0-9]/g, '');
-  let inputUsername = document.getElementById("username").value.toLowerCase();
-  let inputPassword = document.getElementById("password").value;
-  let inputLevel = document.getElementById("level").value;
+  let inputGradeId = document.getElementById("grade").value.toUpperCase();
+  let inputAddress = capitalizeFirstLetter(document.getElementById("address").value);
+  let inputPhone = document.getElementById("phone").value;
+  let inputTuitionId = document.getElementById("tuition").value;
 
   const object = {
-    id: objectId,
+    nisn: objectId,
+    nis: inputNis,
     name: nameWithNoDigits,
-    username: inputUsername,
-    password: inputPassword,
-    level: inputLevel
+    grade_id: inputGradeId,
+    address: inputAddress,
+    phone: inputPhone,
+    tuition_id: inputTuitionId
   }
 
   let xhr = new XMLHttpRequest();
@@ -111,17 +120,17 @@ const update = (objectId) => {
   xhr.send(JSON.stringify(object));
   xhr.addEventListener("load", () => {
     if (xhr.status === 200) {
-      alert('Akun petugas telah diupdate!');
+      alert('Akun siswa telah diupdate!');
       window.location.href = "./index.php";
     } else {
-      alert('Akun petugas gagal diupdate!');
+      alert('Akun siswa gagal diupdate!');
     }
   });
 }
 
 const drop = (objectId) => {
   const object = {
-    id: objectId
+    nisn: objectId
   }
 
   let xhr = new XMLHttpRequest();
@@ -130,10 +139,10 @@ const drop = (objectId) => {
   xhr.send(JSON.stringify(object));
   xhr.addEventListener("load", () => {
     if (xhr.status === 200) {
-      alert('Akun petugas telah dihapus!');
+      alert('Akun siswa telah dihapus!');
       window.location.reload();
     } else {
-      alert('Akun petugas gagal dihapus!');
+      alert('Akun siswa gagal dihapus!');
     }
   });
 }

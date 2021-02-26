@@ -79,7 +79,7 @@ $id = $_GET['nisn'];
         </div>
         <div class="flex mt-16">
           <label for="name">Nama Siswa</label>
-          <input type="text" name="almamater" id="name" placeholder="Nama" autocomplete="off" tabindex="3">
+          <input type="text" name="name" id="name" placeholder="Nama" autocomplete="off" tabindex="3">
         </div>
         <div class="flex mt-16">
           <label for="grade">Kelas</label>

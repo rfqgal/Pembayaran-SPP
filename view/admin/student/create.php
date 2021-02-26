@@ -77,12 +77,25 @@ if (@$_SESSION['level'] != "admin") {
         </div>
         <div class="flex mt-16">
           <label for="name">Nama Siswa</label>
-          <input type="text" name="almamater" id="name" placeholder="Nama" autocomplete="off" tabindex="3">
+          <input type="text" name="name" id="name" placeholder="Nama" autocomplete="off" tabindex="3">
         </div>
         <div class="flex mt-16">
           <label for="grade">Kelas</label>
           <select name="grade" id="grade" tabindex="4">
             <option value="" hidden>Pilih</option>
+            <?php
+            $grades = mysqli_query(
+              mysqli_connect("localhost", "root", "", "pra-ukk"),
+              "SELECT * FROM kelas"
+            );            
+            while (@$grade = mysqli_fetch_assoc($grades)) {
+              ?>
+              <option value="<?= $grade['id_kelas'] ?>">
+                <?= $grade['nama_kelas']." ".$grade['kompetensi_keahlian']." ".$grade['almamater'] ?>
+              </option>
+              <?php
+            }
+            ?>
           </select>
         </div>
         <div class="flex mt-16">
@@ -97,11 +110,24 @@ if (@$_SESSION['level'] != "admin") {
           <label for="tuition">SPP</label>
           <select name="tuition" id="tuition" tabindex="7">
             <option value="" hidden>Pilih</option>
+            <?php
+            $tuitions = mysqli_query(
+              mysqli_connect("localhost", "root", "", "pra-ukk"),
+              "SELECT * FROM spp"
+            );            
+            while (@$tuition = mysqli_fetch_assoc($tuitions)) {
+              ?>
+              <option value="<?= $tuition['id_spp'] ?>">
+                <?= $tuition['tahun']." - ".$tuition['nominal'] ?>
+              </option>
+              <?php
+            }
+            ?>
           </select>
         </div>
         <div class="flex mt-32">
           <label for=""></label>
-          <button type="submit" onclick="create()" tabindex="5">Simpan</button>
+          <button type="submit" onclick="create()" tabindex="8">Simpan</button>
         </div>
       </div>
     </article>
