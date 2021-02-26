@@ -1,0 +1,406 @@
+@font-face {
+  font-family: Lato;
+  src: url('./font/Lato.ttf');
+}
+
+@font-face {
+  font-family: Saira;
+  src: url('./font/Saira.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  font-family: Lato;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-family: Saira;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+.flex {
+  display: flex;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.t-right {
+  text-align: right;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.mt-32 {
+  margin-top: 32px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.mt-48 {
+  margin-top: 48px;
+}
+
+.mt-64 {
+  margin-top: 64px;
+}
+
+.mt-80 {
+  margin-top: 80px;
+}
+
+.mt-88 {
+  margin-top: 88px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.bg-white {
+  background-color: #FFF;
+}
+
+.bg-login {
+  background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('./img/background-login.jpg');
+  background-size: contain;
+  padding: 92px 80px;
+  height: 100%;
+}
+
+.bg-login span {
+  text-shadow: #000 0 0 56px;
+}
+
+.bg-login footer>span {
+  text-shadow: #000 0 0 32px;
+}
+
+main {
+  display: flow-root;
+  padding: 16px 32px;
+  height: fit-content;
+}
+
+.title-login {
+  display: inline-block;
+  font-family: Saira;
+  color: #FFF;
+}
+
+.title-login-1 {
+  font-size: 72px;
+  line-height: 72px;
+}
+
+.title-login-2 {
+  font-size: 96px;
+  font-weight: 600;
+  line-height: 120px;
+}
+
+main.login {
+  display: block;
+  width: 40%;
+  height: 100%;
+  padding: 48px 32px;
+  box-shadow: 0 4px 64px 0 rgba(0, 0, 0, 0.5);
+}
+
+.login h1 {
+  font-size: 48px;
+  line-height: 48px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.login input {
+  display: block;
+  padding: 8px 4px;
+  font-size: 20px;
+  font-family: Lato;
+  width: 100%;
+}
+
+#form input, #form select, #form button, #form textarea {
+  display: block;
+  margin-left: 16px;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-family: Lato;
+  width: 80%;
+}
+
+#form select {
+  padding-left: 6px;
+}
+
+#form label {
+  width: 20%;
+  font-size: 14px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#form label.textarea {
+  margin-top: 6px;
+}
+
+#form button {
+  margin-left: 12.4px;
+  width: auto;
+  padding: 8px 16px;
+}
+
+input#search {
+  width: 50%;
+}
+
+input:focus, select:focus {
+  outline: #333 solid 1px;
+}
+
+a {
+  color: #005BBD;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #005BBD;
+}
+
+a:hover {
+  color: #2E89EA;
+}
+
+button>a {
+  color: #FFF!important;
+}
+
+button>a:hover {
+  color: #FFF!important;
+}
+
+input[type="submit"], button {
+  padding: 8px 16px;
+  background-color: #005BBD;
+  color: #FFF;
+  border: none;
+  border-radius: 2px;
+}
+
+input[type="submit"]:hover, button:hover {
+  cursor: pointer;
+  background-color: #2E89EA;
+}
+
+button.secondary {
+  padding: 8px 16px;
+  background-color: #2E89EA;
+  color: #FFF;
+  border: none;
+}
+
+button.secondary:hover {
+  padding: 8px 16px;
+  background-color: #5CA3EF;
+  color: #FFF;
+  border: none;
+}
+
+input[type="submit"].warning, button.warning {
+  background-color: #FAD202;
+  color: #FFF;
+}
+
+input[type="submit"].danger, button.danger {
+  background-color: #EA1601;
+  color: #FFF;
+}
+
+button.img {
+  padding: 8px;
+}
+
+button.img-search {
+  padding: 4px 8px;
+  margin-left: 3.6px;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 16px;
+  color: #AAA;
+  word-spacing: 1px;
+}
+
+.bg-login footer {
+  width: auto;
+  padding-left: 8px;
+  left: auto;
+  bottom: 92px;
+  color: #FFF;
+  font-size: 24px;
+  word-spacing: 2px;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  padding: 16px;
+  height: 100%;
+  min-width: 220px;
+}
+
+nav.student {
+  background-color: #F3F3F7;
+}
+
+nav.admin {
+  background-color: #333345;
+}
+
+nav>section>.links {
+  padding: 8px;
+}
+
+nav>section span {
+  margin-left: 10px;
+}
+
+.links {
+  margin-bottom: 8px;
+  background-color: #FFF;
+  color: #333;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+}
+
+.links:hover {
+  color: #333;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.3);
+}
+
+.links:visited {
+  color: #333;
+}
+
+.links.active {
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.3);
+}
+
+.admin .links {
+  background-color: unset;
+  color: #FFF;
+  box-shadow: unset;
+}
+
+.admin .links:hover {
+  color: #FFF;
+  box-shadow: unset;
+  background-color: #404060;
+}
+
+.admin .links:visited {
+  color: #FFF;
+}
+
+.admin .links.active {
+  box-shadow: unset;
+  background-color: #404060;
+}
+
+span.dashboard {
+  font-size: 40px;
+}
+
+.card {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+}
+
+article.card {
+  padding: 20px 24px 28px 24px;
+  height: 100%;
+}
+
+article.card.in {
+  padding: 24px;
+  height: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th {
+  background-color: rgba(51, 51, 69, 0.075);
+}
+
+tr {
+  border-bottom: 1px solid #333;
+}
+
+th, td {
+  padding: 8px;
+}
+
+tr:not(.thead):hover {
+  background-color: #FCFCFF;
+}
+
+.action-1 {
+  width: 6%;
+  text-align: center;
+}
+
+.action-2 {
+  width: 12%;
+  text-align: center;
+}
+
+.button-back {
+  margin: 7.2px 3px auto -3px;
+}
