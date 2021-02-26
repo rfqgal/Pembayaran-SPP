@@ -20,14 +20,13 @@ $data = json_decode(file_get_contents("php://input"));
 
 // Make sure data is not empty!
 if (
-  !empty($data->id) &&
   !empty($data->grade) &&
   !empty($data->major)
 ) {
   // Set Object Props Values
-  $grade->id = $data->id;
-  $grade->grade_name = $data->grade;
+  $grade->grade = $data->grade;
   $grade->major = $data->major;
+  $grade->alma_mater = $data->alma_mater;
 
   // Create Student Account
   if ($grade->store()) {

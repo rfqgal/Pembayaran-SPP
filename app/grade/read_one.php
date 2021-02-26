@@ -27,8 +27,9 @@ if ($grade->id != null) {
   // Create Array
   $grade_arr = array(
     "id" => $grade->id,
-    "grade" => $grade->grade_name,
-    "major" => $grade->major
+    "grade" => $grade->grade,
+    "major" => $grade->major,
+    "alma_mater" => $grade->alma_mater
   );
 
   // Set Response Code - 200 'OK'

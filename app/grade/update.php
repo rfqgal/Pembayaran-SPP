@@ -24,8 +24,9 @@ $data = json_decode(file_get_contents("php://input"));
 $grade->id = $data->id;
 
 // Set Object's Props Values
-$grade->grade_name = $data->grade;
+$grade->grade = $data->grade;
 $grade->major = $data->major;
+$grade->alma_mater = $data->alma_mater;
 
 // Update Object Data
 if ($grade->update()) {

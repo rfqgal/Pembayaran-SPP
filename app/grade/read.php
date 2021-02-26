@@ -32,7 +32,8 @@ if ($num > 0) {
     $grade_arr = array(
       "id" => $id_kelas,
       "grade" => $nama_kelas,
-      "major" => $kompetensi_keahlian
+      "major" => $kompetensi_keahlian,
+      "alma_mater" => $almamater
     );
 
     array_push($grades['records'], $grade_arr);
