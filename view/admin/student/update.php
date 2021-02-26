@@ -62,10 +62,10 @@ $id = $_GET['nisn'];
   </nav>
   <main>
     <div class="flex">
-      <a href="../" class="button-back">
+      <a onclick="window.history.back()" class="button-back">
         <img src="<?= $img ?>/back.svg" alt="Back">
       </a>
-      <h1>Update Kelas</h1>
+      <h1>Update Siswa</h1>
     </div>
     <article class="card in">
       <div id="form">
@@ -83,8 +83,22 @@ $id = $_GET['nisn'];
         </div>
         <div class="flex mt-16">
           <label for="grade">Kelas</label>
+          <input type="hidden" name="grade_id" id="grade_id">
           <select name="grade" id="grade" tabindex="4">
             <option value="" hidden>Pilih</option>
+            <?php
+            $grades = mysqli_query(
+              mysqli_connect("localhost", "root", "", "pra-ukk"),
+              "SELECT * FROM kelas"
+            );            
+            while (@$grade = mysqli_fetch_assoc($grades)) {
+              ?>
+              <option value="<?= $grade['id_kelas'] ?>">
+                <?= $grade['nama_kelas']." ".$grade['kompetensi_keahlian']." ".$grade['almamater'] ?>
+              </option>
+              <?php
+            }
+            ?>
           </select>
         </div>
         <div class="flex mt-16">
@@ -92,14 +106,32 @@ $id = $_GET['nisn'];
           <textarea name="address" id="address" cols="30" rows="3" placeholder="Alamat" tabindex="5"></textarea>
         </div>
         <div class="flex mt-16">
+          <label for="phone">No. Telepon Siswa</label>
+          <input type="number" name="phone" id="phone" placeholder="No. Telepon" tabindex="6">
+        </div>
+        <div class="flex mt-16">
           <label for="tuition">SPP</label>
-          <select name="tuition" id="tuition" tabindex="6">
+          <input type="hidden" name="tuition_id" id="tuition_id">
+          <select name="tuition" id="tuition" tabindex="7">
             <option value="" hidden>Pilih</option>
+            <?php
+            $tuitions = mysqli_query(
+              mysqli_connect("localhost", "root", "", "pra-ukk"),
+              "SELECT * FROM spp"
+            );            
+            while (@$tuition = mysqli_fetch_assoc($tuitions)) {
+              ?>
+              <option value="<?= $tuition['id_spp'] ?>">
+                <?= $tuition['tahun']." - ".$tuition['nominal'] ?>
+              </option>
+              <?php
+            }
+            ?>
           </select>
         </div>
         <div class="flex mt-32">
           <label for=""></label>
-          <button type="submit" onclick="update(<?= $id ?>)" tabindex="5">Update</button>
+          <button type="submit" onclick="update(<?= $id ?>)" tabindex="8">Update</button>
         </div>
       </div>
     </article>
