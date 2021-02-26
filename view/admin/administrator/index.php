@@ -60,7 +60,7 @@ if (@$_SESSION['level'] != "admin") {
   </nav>
   <main>
     <div class="flex">
-      <a href="../" class="button-back">
+      <a onclick="window.history.back()" class="button-back">
         <img src="<?= $img ?>/back.svg" alt="Back">
       </a>
       <h1>Manajemen Petugas</h1>

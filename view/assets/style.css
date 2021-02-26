@@ -402,5 +402,6 @@ tr:not(.thead):hover {
 }
 
 .button-back {
+  cursor: pointer;
   margin: 7.2px 3px auto -3px;
 }
