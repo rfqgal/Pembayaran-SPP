@@ -20,12 +20,10 @@ $data = json_decode(file_get_contents("php://input"));
 
 // Make sure data is not empty!
 if (
-  !empty($data->id) &&
   !empty($data->year) &&
   !empty($data->fee)
 ) {
   // Set Object Props Values
-  $tuition->id = $data->id;
   $tuition->year = $data->year;
   $tuition->fee = $data->fee;
 
