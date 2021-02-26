@@ -71,7 +71,7 @@ $id = $_GET['id'];
       <div id="form">
         <div class="flex">
           <label for="name">ID Petugas</label>
-          <input type="text" name="id" id="id" value="<?= $id ?>" disabled>
+          <input type="text" name="id" id="id" disabled>
         </div>
         <div class="flex mt-16">
           <label for="name">Nama Petugas</label>

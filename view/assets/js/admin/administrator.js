@@ -71,6 +71,7 @@ const get = (objectId) => {
 
     responseJson.records.forEach(object => {
       if (object.id == objectId) {
+        document.getElementById("id").value = objectId;
         document.getElementById("name").value = object.name;
         document.getElementById("username").value = object.username;
         document.getElementById("level").value = object.level;
