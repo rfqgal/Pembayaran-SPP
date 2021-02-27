@@ -12,7 +12,7 @@ const read = () => {
     responseJson.records.forEach(object => {
       listObjects.innerHTML += `
       <tr class="listObject">
-        <td>${object.grade} ${object.major} ${object.alma_mater}</td>
+        <td>${object.name}</td>
         <td>
           ${
             (object.major == "RPL") ? "Rekayasa Perangkat Lunak" :
