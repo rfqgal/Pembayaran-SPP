@@ -20,26 +20,35 @@ $grade = new Grade($db);
 // Get ID of Object to be Edited
 $data = json_decode(file_get_contents("php://input"));
 
-// Set ID Props of Object to be Edited
-$grade->id = $data->id;
+// Make sure not empty
+if (
+  !empty($data->id) &&
+  !empty($data->grade) &&
+  !empty($data->major) &&
+  !empty($data->alma_mater)
+) {
+  // Set ID Props of Object to be Edited
+  $grade->id = $data->id;
 
-// Set Object's Props Values
-$grade->grade = $data->grade;
-$grade->major = $data->major;
-$grade->alma_mater = $data->alma_mater;
+  // Set Object's Props Values
+  $grade->name = $data->grade." ".$data->major." ".$data->alma_mater;
+  $grade->grade = $data->grade;
+  $grade->major = $data->major;
+  $grade->alma_mater = $data->alma_mater;
 
-// Update Object Data
-if ($grade->update()) {
-  // Set Response Code - 200 'OK'
-  http_response_code(200);
+  // Update Object Data
+  if ($grade->update()) {
+    // Set Response Code - 200 'OK'
+    http_response_code(200);
 
-  // Tell the User
-  echo json_encode(array("message" => "Kelas telah diupdate!"));
-} else {
-  // If Unable
-  // Set Response Code - 503 'Service Unavailable'
-  http_response_code(503);
+    // Tell the User
+    echo json_encode(array("message" => "Kelas telah diupdate!"));
+  } else {
+    // If Unable
+    // Set Response Code - 503 'Service Unavailable'
+    http_response_code(503);
 
-  // Tell the User
-  echo json_encode(array("message" => "Kelas gagal diupdate!"));
+    // Tell the User
+    echo json_encode(array("message" => "Kelas gagal diupdate!"));
+  }
 }

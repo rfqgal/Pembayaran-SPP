@@ -27,6 +27,7 @@ if ($grade->id != null) {
   // Create Array
   $grade_arr = array(
     "id" => $grade->id,
+    "name" => $grade->name,
     "grade" => $grade->grade,
     "major" => $grade->major,
     "alma_mater" => $grade->alma_mater

@@ -6,6 +6,7 @@ class Grade
 
   // Object Props
   public $id;
+  public $name;
   public $grade;
   public $major;
   public $alma_mater;
@@ -34,7 +35,7 @@ class Grade
   {
     // Query Insert
     $query = "INSERT INTO kelas SET
-      nama_kelas=:nama_kelas, 
+      nama_kelas=:nama_kelas, kelas=:kelas,
       kompetensi_keahlian=:kompetensi_keahlian, almamater=:almamater
     ";
 
@@ -42,12 +43,14 @@ class Grade
     $stmt = $this->conn->prepare($query);
 
     // Sanitize
+    $this->name = htmlspecialchars(strip_tags($this->name));
     $this->grade = htmlspecialchars(strip_tags($this->grade));
     $this->major = htmlspecialchars(strip_tags($this->major));
     $this->alma_mater = htmlspecialchars(strip_tags($this->alma_mater));
 
     // Bind Values
-    $stmt->bindParam(":nama_kelas", $this->grade);
+    $stmt->bindParam(":nama_kelas", $this->name);
+    $stmt->bindParam(":kelas", $this->grade);
     $stmt->bindParam(":kompetensi_keahlian", $this->major);
     $stmt->bindParam(":almamater", $this->alma_mater);
 
@@ -80,7 +83,8 @@ class Grade
 
     // Set Values to Object Props
     $this->id = $row['id_kelas'];
-    $this->grade = $row['nama_kelas'];
+    $this->name = $row['nama_kelas'];
+    $this->grade = $row['kelas'];
     $this->major = $row['kompetensi_keahlian'];
     $this->alma_mater = $row['almamater'];
   }
@@ -89,7 +93,7 @@ class Grade
   {
     // Update Query
     $query = "UPDATE kelas SET 
-      nama_kelas=:nama_kelas, 
+      nama_kelas=:nama_kelas, kelas=:kelas,
       kompetensi_keahlian=:kompetensi_keahlian,
       almamater=:almamater
       WHERE id_kelas=:id_kelas
@@ -99,6 +103,7 @@ class Grade
     $stmt = $this->conn->prepare($query);
 
     // Sanitize
+    $this->name = htmlspecialchars(strip_tags($this->name));
     $this->grade = htmlspecialchars(strip_tags($this->grade));
     $this->major = htmlspecialchars(strip_tags($this->major));
     $this->alma_mater = htmlspecialchars(strip_tags($this->alma_mater));
@@ -106,7 +111,8 @@ class Grade
     $this->id = htmlspecialchars(strip_tags($this->id));
 
     // Bind New Values
-    $stmt->bindParam(":nama_kelas", $this->grade);
+    $stmt->bindParam(":nama_kelas", $this->name);
+    $stmt->bindParam(":kelas", $this->grade);
     $stmt->bindParam(":kompetensi_keahlian", $this->major);
     $stmt->bindParam(":almamater", $this->alma_mater);
 
@@ -144,8 +150,7 @@ class Grade
   {
     // Query Read
     $query = "SELECT * FROM kelas
-      WHERE nama_kelas LIKE ? OR kompetensi_keahlian LIKE ?
-      OR almamater LIKE ?
+      WHERE nama_kelas LIKE ?
     ";
 
     // Prepare Query Statement
@@ -157,8 +162,6 @@ class Grade
 
     // Bind
     $stmt->bindParam(1, $keywords);
-    $stmt->bindParam(2, $keywords);
-    $stmt->bindParam(3, $keywords);
 
     // Execute Query
     $stmt->execute();

@@ -31,7 +31,8 @@ if ($num > 0) {
 
     $grade_arr = array(
       "id" => $id_kelas,
-      "grade" => $nama_kelas,
+      "name" => $nama_kelas,
+      "grade" => $kelas,
       "major" => $kompetensi_keahlian,
       "alma_mater" => $almamater
     );
