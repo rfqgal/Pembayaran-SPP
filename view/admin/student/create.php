@@ -92,7 +92,7 @@ if (@$_SESSION['level'] != "admin") {
             while (@$grade = mysqli_fetch_assoc($grades)) {
               ?>
               <option value="<?= $grade['id_kelas'] ?>">
-                <?= $grade['nama_kelas']." ".$grade['kompetensi_keahlian']." ".$grade['almamater'] ?>
+                <?= $grade['nama_kelas'] ?>
               </option>
               <?php
             }
