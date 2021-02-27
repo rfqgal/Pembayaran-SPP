@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../../route.php');
+$conn = mysqli_connect("localhost", "root", "", "pra-ukk");
 
 if (@$_SESSION['level'] != "admin") {
   echo "
@@ -85,7 +86,7 @@ if (@$_SESSION['level'] != "admin") {
             <option value="" hidden>Pilih</option>
             <?php
             $grades = mysqli_query(
-              mysqli_connect("localhost", "root", "", "pra-ukk"),
+              $conn,
               "SELECT * FROM kelas"
             );            
             while (@$grade = mysqli_fetch_assoc($grades)) {
@@ -112,7 +113,7 @@ if (@$_SESSION['level'] != "admin") {
             <option value="" hidden>Pilih</option>
             <?php
             $tuitions = mysqli_query(
-              mysqli_connect("localhost", "root", "", "pra-ukk"),
+              $conn,
               "SELECT * FROM spp"
             );            
             while (@$tuition = mysqli_fetch_assoc($tuitions)) {
