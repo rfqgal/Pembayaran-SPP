@@ -69,7 +69,7 @@ if (@$_SESSION['level'] != "admin") {
       <header class="flex">
         <input tabindex="1" type="text" name="search" id="search"
         autocomplete="off" placeholder="Cari Kelas atau Kompetensi Keahlian">
-        <button id="btnSearch" class="img-search" onclick="read()">
+        <button id="btnSearch" class="img-search" onclick="search()">
           <img src="<?= $img ?>/search-white.svg" alt="Search">
         </button>
         <div class="right">
