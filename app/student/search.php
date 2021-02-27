@@ -37,7 +37,7 @@ if ($num > 0) {
       "nisn" => $nisn,
       "nis" => $nis,
       "name" => $nama,
-      "grade" => $nama_kelas." ".$kompetensi_keahlian." ".$almamater,
+      "grade" => $nama_kelas,
       "address" => html_entity_decode($alamat),
       "phone" => $no_telp,
       "tuition" => $nominal
