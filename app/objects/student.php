@@ -101,6 +101,7 @@ class Student
     $this->nisn = $row['nisn'];
     $this->nis = $row['nis'];
     $this->name = $row['nama'];
+    $this->grade_id = $row['id_kelas'];
     $this->grade_name = $row['nama_kelas'];
     $this->address = $row['alamat'];
     $this->phone = $row['no_telp'];
