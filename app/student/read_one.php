@@ -24,21 +24,27 @@ $student->nisn = isset($_GET['nisn']) ? $_GET['nisn'] : die();
 $student->readOne();
 
 if ($student->nisn != null) {
+  // Students Array
+  $students = array();
+  $students["record"] = array();
+
   // Create Array
   $student_arr = array(
     "nisn" => $student->nisn,
     "nis" => $student->nis,
-    "nama" => $student->name,
-    "nama_kelas" => $student->grade_name,
-    "alamat" => $student->address,
-    "no_telp" => $student->phone,
+    "name" => $student->name,
+    "grade_id" => $student->grade_id,
+    "grade" => $student->grade_name,
+    "address" => $student->address,
+    "phone" => $student->phone,
     "tuition_id" => $student->tuition_id,
-    "jumlah_spp" => $student->tuition_fee
-  );
+    "tuition" => $student->tuition_fee
+  );  
+  array_push($students['record'], $student_arr);
 
   // Set Response Code - 200 'OK'
   http_response_code(200);
 
   // Create JSON
-  echo json_encode($student_arr);
+  echo json_encode($students);
 }
