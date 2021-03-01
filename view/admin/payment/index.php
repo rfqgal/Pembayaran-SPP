@@ -69,14 +69,14 @@ if (@$_SESSION['level'] != "admin") {
       <header class="flex">
         <input tabindex="1" type="text" name="search" id="search" autocomplete="off"
         placeholder="Cari Petugas, NISN, Nama Siswa, Bulan atau Tahun Bayar">
-        <button id="btnSearch" class="img-search" onclick="read()">
+        <button id="btnSearch" class="img-search" onclick="search()">
           <img src="<?= $img ?>/search-white.svg" alt="Search">
         </button>
         <div class="right">
-          <a href="./create.php">
-            <button>Tambah</button>
+          <a href="./entry.php">
+            <button>Entri Transaksi</button>
           </a>
-          <a href="./print.php">
+          <a href="./find.php">
             <button class="secondary">Cetak</button>
           </a>
         </div>
@@ -93,7 +93,7 @@ if (@$_SESSION['level'] != "admin") {
               <th>Tahun Bayar</th>
               <th>Nominal SPP</th>
               <th>Jumlah Bayar</th>
-              <th class="action-2">Aksi</th>
+              <th class="action-1">Aksi</th>
             </tr>
           </thead>
           <tbody id="listObjects"></tbody>

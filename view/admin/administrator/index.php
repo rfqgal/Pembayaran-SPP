@@ -76,9 +76,6 @@ if (@$_SESSION['level'] != "admin") {
           <a href="./create.php">
             <button>Tambah</button>
           </a>
-          <a href="./print.php">
-            <button class="secondary">Cetak</button>
-          </a>
         </div>
       </header>
       <div class="mt-20">

@@ -51,9 +51,11 @@ const confirmDelete = (id, message) => {
   }
 }
 
-document.getElementById("search").addEventListener("keyup", (event) => {
-  event.preventDefault();
-  if (event.keyCode === 13) {
-    document.getElementById("btnSearch").click();
-  }
-});
+if (document.getElementById("search")) {
+  document.getElementById("search").addEventListener("keyup", (event) => {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+      document.getElementById("btnSearch").click();
+    }
+  });
+}

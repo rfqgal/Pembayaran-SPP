@@ -20,22 +20,22 @@ $data = json_decode(file_get_contents("php://input"));
 
 // Make sure data is not empty!
 if (
-  !empty($data->payment_id) &&
   !empty($data->administrator_id) &&
   !empty($data->nisn) &&
   !empty($data->payment_date) &&
-  !empty($data->payment_month) && 
-  !empty($data->payment_year) && 
+  !empty($data->date_paid) && 
+  !empty($data->month_paid) && 
+  !empty($data->year_paid) && 
   !empty($data->tuition_id) && 
   !empty($data->payment_total) 
 ) {
   // Set Object Props Values
-  $payment->payment_id = $data->payment_id;
   $payment->administrator_id = $data->administrator_id;
   $payment->nisn = $data->nisn;
   $payment->payment_date = $data->payment_date;
-  $payment->payment_month = $data->payment_month;
-  $payment->payment_year = $data->payment_year;
+  $payment->date_paid = $data->date_paid;
+  $payment->month_paid = $data->month_paid;
+  $payment->year_paid = $data->year_paid;
   $payment->tuition_id = $data->tuition_id;
   $payment->payment_total = $data->payment_total;
 

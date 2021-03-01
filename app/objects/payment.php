@@ -11,8 +11,9 @@ class Payment
   public $nisn;
   public $student_name;
   public $payment_date;
-  public $payment_month;
-  public $payment_year;
+  public $date_paid;
+  public $month_paid;
+  public $year_paid;
   public $tuition_id;
   public $tuition_fee;
   public $payment_total;
@@ -30,6 +31,7 @@ class Payment
       INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
       INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
       INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
+      ORDER BY id_pembayaran DESC
     ";
 
     // Prepare Query Statement
@@ -45,8 +47,8 @@ class Payment
   {
     // Query Insert
     $query = "INSERT INTO pembayaran SET
-      id_pembayaran=:id_pembayaran, id_petugas=:id_petugas, nisn=:nisn,
-      tgl_bayar=:tgl_bayar, bulan_dibayar=:bulan_dibayar, 
+      id_petugas=:id_petugas, nisn=:nisn, tgl_bayar=:tgl_bayar, 
+      tgl_dibayar=:tgl_dibayar, bulan_dibayar=:bulan_dibayar,
       tahun_dibayar=:tahun_dibayar, id_spp=:id_spp, jumlah_bayar=:jumlah_bayar
     ";
 
@@ -54,22 +56,22 @@ class Payment
     $stmt = $this->conn->prepare($query);
 
     // Sanitize
-    $this->payment_id = htmlspecialchars(strip_tags($this->payment_id));
     $this->administrator_id = htmlspecialchars(strip_tags($this->administrator_id));
     $this->administrator_name = htmlspecialchars(strip_tags($this->administrator_name));
     $this->nisn = htmlspecialchars(strip_tags($this->nisn));
     $this->payment_date = htmlspecialchars(strip_tags($this->payment_date));
-    $this->payment_month = htmlspecialchars(strip_tags($this->payment_month));
+    $this->date_paid = htmlspecialchars(strip_tags($this->date_paid));
+    $this->month_paid = htmlspecialchars(strip_tags($this->month_paid));
     $this->tuition_id = htmlspecialchars(strip_tags($this->tuition_id));
     $this->payment_total = htmlspecialchars(strip_tags($this->payment_total));
 
     // Bind Values
-    $stmt->bindParam(":id_pembayaran", $this->payment_id);
     $stmt->bindParam(":id_petugas", $this->administrator_id);
     $stmt->bindParam(":nisn", $this->nisn);
     $stmt->bindParam(":tgl_bayar", $this->payment_date);
-    $stmt->bindParam(":bulan_dibayar", $this->payment_month);
-    $stmt->bindParam(":tahun_dibayar", $this->payment_year);
+    $stmt->bindParam(":tgl_dibayar", $this->date_paid);
+    $stmt->bindParam(":bulan_dibayar", $this->month_paid);
+    $stmt->bindParam(":tahun_dibayar", $this->year_paid);
     $stmt->bindParam(":id_spp", $this->tuition_id);
     $stmt->bindParam(":jumlah_bayar", $this->payment_total);
 
@@ -110,8 +112,9 @@ class Payment
     $this->nisn = $row['nisn'];
     $this->student_name = $row['nama'];
     $this->payment_date = $row['tgl_bayar'];
-    $this->payment_month = $row['bulan_dibayar'];
-    $this->payment_year = $row['tahun_dibayar'];
+    $this->date_paid = $row['tgl_dibayar'];
+    $this->month_paid = $row['bulan_dibayar'];
+    $this->year_paid = $row['tahun_dibayar'];
     $this->tuition_id = $row['id_spp'];
     $this->tuition_fee = $row['nominal'];
     $this->payment_total = $row['jumlah_bayar'];
@@ -121,8 +124,8 @@ class Payment
   {
     // Update Query
     $query = "UPDATE pembayaran SET
-      id_petugas=:id_petugas, nisn=:nisn,
-      tgl_bayar=:tgl_bayar, bulan_dibayar=:bulan_dibayar, 
+      id_petugas=:id_petugas, nisn=:nisn, tgl_bayar=:tgl_bayar, 
+      tgl_dibayar=:tgl_dibayar, bulan_dibayar=:bulan_dibayar, 
       tahun_dibayar=:tahun_dibayar, id_spp=:id_spp, jumlah_bayar=:jumlah_bayar
       WHERE id_pembayaran=:id_pembayaran
     ";
@@ -135,7 +138,9 @@ class Payment
     $this->administrator_name = htmlspecialchars(strip_tags($this->administrator_name));
     $this->nisn = htmlspecialchars(strip_tags($this->nisn));
     $this->payment_date = htmlspecialchars(strip_tags($this->payment_date));
-    $this->payment_month = htmlspecialchars(strip_tags($this->payment_month));
+    $this->date_paid = htmlspecialchars(strip_tags($this->date_paid));
+    $this->month_paid = htmlspecialchars(strip_tags($this->month_paid));
+    $this->year_paid = htmlspecialchars(strip_tags($this->year_paid));
     $this->tuition_id = htmlspecialchars(strip_tags($this->tuition_id));
     $this->payment_total = htmlspecialchars(strip_tags($this->payment_total));
     
@@ -145,8 +150,9 @@ class Payment
     $stmt->bindParam(":id_petugas", $this->administrator_id);
     $stmt->bindParam(":nisn", $this->nisn);
     $stmt->bindParam(":tgl_bayar", $this->payment_date);
-    $stmt->bindParam(":bulan_dibayar", $this->payment_month);
-    $stmt->bindParam(":tahun_dibayar", $this->payment_year);
+    $stmt->bindParam(":tgl_dibayar", $this->date_paid);
+    $stmt->bindParam(":bulan_dibayar", $this->month_paid);
+    $stmt->bindParam(":tahun_dibayar", $this->year_paid);
     $stmt->bindParam(":id_spp", $this->tuition_id);
     $stmt->bindParam(":jumlah_bayar", $this->payment_total);
 
@@ -187,7 +193,7 @@ class Payment
       INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
       INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
       INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
-      WHERE nama_petugas LIKE ? OR siswa.nisn LIKE ? OR nama LIKE ? 
+      WHERE siswa.nisn LIKE ? OR nama LIKE ? 
       OR bulan_dibayar LIKE ? OR tahun_dibayar LIKE ? 
     ";
 
@@ -203,7 +209,6 @@ class Payment
     $stmt->bindParam(2, $keywords);
     $stmt->bindParam(3, $keywords);
     $stmt->bindParam(4, $keywords);
-    $stmt->bindParam(5, $keywords);
 
     // Execute Query
     $stmt->execute();

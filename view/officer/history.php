@@ -53,24 +53,24 @@ if (@$_SESSION['level'] != "officer") {
         <input type="text" name="search" id="search" onkeyup="search()" 
         placeholder="Cari Nama Siswa, Petugas, NISN" autocomplete="off">
         <div class="right">
-          <a href="<?= $print_officer ?>">
-            <button>Cetak Semua Pembayaran</button>
+          <a href="./entry.php">
+            <button>Entri Transaksi</button>
           </a>
         </div>
       </header>
       <div class="mt-20">
-        <table id="listObjects">
-          <tr>
-            <th>Nama Petugas</th>
-            <th>NISN</th>
-            <th>Nama Siswa</th>
-            <th>Tanggal Bayar</th>
-            <th>Bulan Bayar</th>
-            <th>Tahun Bayar</th>
-            <th>Nominal SPP</th>
-            <th>Jumlah Bayar</th>
-            <th class="action-1">Aksi</th>
-          </tr>
+        <table>
+          <thead>
+            <tr>
+              <th>NISN</th>
+              <th>Nama Siswa</th>
+              <th>Tanggal Bayar</th>
+              <th>Bulan Bayar</th>
+              <th>Tahun Bayar</th>
+              <th>Jumlah Bayar</th>
+            </tr>
+          </thead>
+          <tbody id="listObjects"></tbody>
         </table>
       </div>
     </article>

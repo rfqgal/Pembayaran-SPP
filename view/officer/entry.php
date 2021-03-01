@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../route.php');
+$conn = mysqli_connect("localhost", "root", "", "pra-ukk");
 
 if (@$_SESSION['level'] != "officer") {
   echo "
@@ -12,6 +13,7 @@ if (@$_SESSION['level'] != "officer") {
 }
 ?>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +21,8 @@ if (@$_SESSION['level'] != "officer") {
   <title>SPPku</title>
   <link rel="stylesheet" href="<?= $css ?>">
 </head>
-<body>
+
+<body onload="readPagingEntry()">
   <nav class="float-left admin">
     <header class="t-center">
       <a href="<?= $index_officer ?>">
@@ -27,7 +30,7 @@ if (@$_SESSION['level'] != "officer") {
       </a>
     </header>
     <section class="mt-32">
-      <a class="flex links active" href="<?= $index_officer ?>">
+      <a class="flex links active" href="<?= $entry_officer ?>">
         <img src="<?= $img ?>/entry-white.svg" alt="">
         <span>Entri Transaksi</span>
       </a>
@@ -45,9 +48,93 @@ if (@$_SESSION['level'] != "officer") {
     </footer>
   </nav>
   <main>
-    <header class="flex">
-      <h1>Entri Pembayaran</h1>
-    </header>
+    <div class="flex">
+      <a onclick="window.history.back()" class="button-back">
+        <img src="<?= $img ?>/back.svg" alt="Back">
+      </a>
+      <h1>Cari Siswa</h1>
+    </div>
+    <article class="card">
+      <header class="flex">
+        <input tabindex="1" type="text" name="search" id="search" placeholder="Cari NISN, NIS, Nama, atau Kelas" autocomplete="off">
+        <button id="btnSearch" class="img-search" onclick="search()">
+          <img src="<?= $img ?>/search-white.svg" alt="Search">
+        </button>
+        <div class="right">
+          <select class="search" name="grade" id="grade" onchange="select()">
+            <option value="">Kelas</option>
+            <?php
+            $grades = mysqli_query(
+              $conn,
+              "SELECT * FROM kelas"
+            );
+            while (@$grade = mysqli_fetch_assoc($grades)) {
+            ?>
+              <option value="<?= $grade['nama_kelas'] ?>">
+                <?= $grade['nama_kelas'] ?>
+              </option>
+            <?php
+            }
+            ?>
+          </select>
+        </div>
+      </header>
+      <div class="mt-20">
+        <table>
+          <thead>
+            <tr>
+              <th>NISN</th>
+              <th>NIS</th>
+              <th>Nama</th>
+              <th style="width: 10%;">Kelas</th>
+              <th>Alamat</th>
+              <th>Telepon</th>
+              <th>Nominal SPP</th>
+              <th class="action-1">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="listObjects"></tbody>
+        </table>
+      </div>
+    </article>
   </main>
 </body>
+<script src="<?= $javascript ?>/officer/payment.js"></script>
+<script src="<?= $javascript ?>/utilities.js"></script>
+<script>
+  document.getElementById("grade").addEventListener("change", () => {
+    let input = document.getElementById("grade");
+    let find = input.value.toLowerCase();
+    listObjects.innerHTML = "";
+
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", () => {
+      const responseJson = JSON.parse(xhr.responseText);
+      listObjects.innerHTML = "";
+      console.log(find);
+
+      responseJson.records.forEach(object => {
+        listObjects.innerHTML += `
+      <tr class="listObject">
+        <td>${object.nisn}</td>
+        <td>${object.nis}</td>
+        <td>${object.name}</td>
+        <td>${object.grade}</td>
+        <td>${object.address}</td>
+        <td>${object.phone}</td>
+        <td>${object.tuition}</td>
+        <td class="action-1">
+          <a href="./transaction.php?nisn=${object.nisn}">
+            <button>Bayar</button>
+          </a>
+        </td>
+      </tr>
+    `;
+      })
+    });
+    xhr.open("GET", `${studentLink}/search.php?search=${find}`);
+    xhr.send();
+  });
+</script>
+
 </html>
