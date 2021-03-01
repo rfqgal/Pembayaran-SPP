@@ -1,10 +1,32 @@
 const read = () => {
   const userId = document.querySelector('#userId');
-  
+  const userName = document.querySelector('#userName');
+
   const xhr = new XMLHttpRequest();
   xhr.addEventListener("load", () => {
     const responseJson = JSON.parse(xhr.responseText);
-  
+
+    responseJson.records.forEach(object => {
+      if (object.nisn == userId.value) {
+        lists.innerHTML = `
+          <table id="listObjects">
+            <tr>
+              <th>NISN</th>
+              <th>Nama Siswa</th>
+              <th>Tanggal Bayar</th>
+              <th>Bulan Bayar</th>
+              <th>Tahun Bayar</th>
+              <th>Jumlah Bayar</th>
+            </tr>
+          </table>
+        `;
+      } else {
+        lists.innerHTML = `
+          <h1 class="lato t-center mt-16">Maaf ${userName.value}, kamu belum bayar sama sekali :(</h1>
+        `;
+      }
+    })
+
     responseJson.records.forEach(object => {
       if (object.nisn == userId.value) {
         listObjects.innerHTML += `
@@ -14,8 +36,7 @@ const read = () => {
             <td>${object.payment_date}</td>
             <td>${object.payment_month}</td>
             <td>${object.payment_year}</td>
-            <td>${object.tuition_fee}</td>
-            <td>${object.payment_total}</td>
+            <td>${formatRupiah(object.payment_total, "Rp. ")}</td>
           </tr>
         `;
       }

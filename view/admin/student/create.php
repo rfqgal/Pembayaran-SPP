@@ -119,7 +119,7 @@ if (@$_SESSION['level'] != "admin") {
             while (@$tuition = mysqli_fetch_assoc($tuitions)) {
               ?>
               <option value="<?= $tuition['id_spp'] ?>">
-                <?= $tuition['tahun']." - ".$tuition['nominal'] ?>
+                <?= "Rp. ".number_format($tuition['nominal'],0,',','.')." (".$tuition['tahun'].")" ?>
               </option>
               <?php
             }

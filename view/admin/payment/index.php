@@ -77,7 +77,7 @@ if (@$_SESSION['level'] != "admin") {
             <button>Entri Transaksi</button>
           </a>
           <a href="./find.php">
-            <button class="secondary">Cetak</button>
+            <button class="secondary">Cetak Laporan</button>
           </a>
         </div>
       </header>
@@ -91,7 +91,6 @@ if (@$_SESSION['level'] != "admin") {
               <th>Tanggal Bayar</th>
               <th>Bulan Bayar</th>
               <th>Tahun Bayar</th>
-              <th>Nominal SPP</th>
               <th>Jumlah Bayar</th>
               <th class="action-1">Aksi</th>
             </tr>

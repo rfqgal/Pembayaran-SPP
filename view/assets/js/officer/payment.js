@@ -29,7 +29,7 @@ const read = () => {
         <td>${object.payment_date}</td>
         <td>${object.payment_month}</td>
         <td>${object.payment_year}</td>
-        <td>${object.payment_total}</td>
+        <td>${formatRupiah(object.payment_total, "Rp. ")}</td>
       </tr>
     `;
     })
@@ -56,7 +56,7 @@ const find = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${object.tuition}</td>
+        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
         <td class="action-1">
           <a href="./transaction.php?nisn=${object.nisn}">
             <button>Bayar</button>
@@ -88,7 +88,7 @@ const readPagingEntry = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${object.tuition}</td>
+        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
         <td class="action-1">
           <a href="./transaction.php?nisn=${object.nisn}">
             <button>Bayar</button>

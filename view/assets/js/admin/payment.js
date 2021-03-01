@@ -30,21 +30,25 @@ const read = () => {
         <td>${object.payment_date}</td>
         <td>${object.payment_month}</td>
         <td>${object.payment_year}</td>
-        <td>${object.tuition_fee}</td>
-        <td>${object.payment_total}</td>
-        <td class="action-1">
+        <td>${formatRupiah(object.payment_total, "Rp. ")}</td>
+        <td class="action-2">
+          <a href="./receipt.php?payment_id=${object.payment_id}">
+            <button class="img">
+              <img src="../../assets/img/button-print-20px.svg" alt="Edit">
+            </button>
+          </a>
           <button onclick="confirmDelete(
             ${object.payment_id}, 
             'Apakah Anda yakin ingin menghapus pembayaran bulan ${object.payment_month} dari siswa ${object.student_name}?'
             )" class="danger img">
-            <img src="../../assets/img/button-delete.svg" alt="Delete">
+            <img src="../../assets/img/button-delete-20px.svg" alt="Delete">
           </button>
         </td>
       </tr>
     `;
     })
   });
-  xhr.open("GET", `${baseLink}/search.php?search=${find}`);
+  xhr.open("GET", `${baseLink}/read.php`);
   xhr.send();
 }
 
@@ -98,7 +102,7 @@ const readPagingEntry = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${object.tuition}</td>
+        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
         <td class="action-1">
           <a href="./transaction.php?nisn=${object.nisn}">
             <button>Bayar</button>
@@ -131,7 +135,7 @@ const readPagingPrint = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${object.tuition}</td>
+        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
         <td class="action-1">
           <a href="./print.php?nisn=${object.nisn}">
             <button class="secondary">Cetak</button>

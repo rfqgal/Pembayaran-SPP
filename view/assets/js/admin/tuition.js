@@ -13,7 +13,7 @@ const read = () => {
       listObjects.innerHTML += `
       <tr class="listObject">
         <td>${object.year}</td>
-        <td>${object.fee}</td>
+        <td>${formatRupiah(object.fee, "Rp. ")}</td>
         <td class="action-2">
           <a href="./update.php?id=${object.id}">
             <button class="warning img">

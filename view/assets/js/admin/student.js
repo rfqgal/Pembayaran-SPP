@@ -18,7 +18,7 @@ const read = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${object.tuition}</td>
+        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
         <td class="action-2">
           <a href="./update.php?nisn=${object.nisn}">
             <button class="warning img">

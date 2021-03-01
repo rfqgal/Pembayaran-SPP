@@ -24,6 +24,7 @@ if (@$_SESSION['level'] != "student") {
 <body onload="read()">
   <!-- Define User ID for Javascript -->
   <input type="text" name="userId" id="userId" value="<?= $_SESSION['id'] ?>" hidden>
+  <input type="text" name="userId" id="userName" value="<?= $_SESSION['name'] ?>" hidden>
 
   <nav class="float-left student">
     <header class="t-center">
@@ -47,25 +48,13 @@ if (@$_SESSION['level'] != "student") {
   </nav>
   <main>
     <header class="flex">
-      <h1>Histori Pembayaran</h1>
-      <a href="<?= $print_student ?>">
-        <button>Cetak</button>
+      <a onclick="window.history.back()" class="button-back">
+        <img src="<?= $img ?>/back.svg" alt="Back">
       </a>
+      <h1>Histori Pembayaran</h1>
     </header>
     <article class="card">
-      <div class="lists">
-        <table id="listObjects">
-          <tr class="thead">
-            <th>NISN</th>
-            <th>Nama Siswa</th>
-            <th>Tanggal Bayar</th>
-            <th>Bulan Bayar</th>
-            <th>Tahun Bayar</th>
-            <th>Nominal SPP</th>
-            <th>Jumlah Bayar</th>
-          </tr>
-        </table>
-      </div>
+      <div id="lists"></div>
     </article>
   </main>
 </body>

@@ -42,8 +42,8 @@ if (mysqli_num_rows($read) <= 12) {
     <title>
       Riwayat Pembayaran SPP
       <?=
-        $transaction['nama'] . " " . $transaction['tahun_dibayar'] . 
-        "/" . ($transaction['tahun_dibayar'] + 1) 
+      $transaction['nama'] . " " . $transaction['tahun_dibayar'] .
+        "/" . ($transaction['tahun_dibayar'] + 1)
       ?>
     </title>
     <link rel="stylesheet" href="<?= $css ?>">
@@ -58,8 +58,8 @@ if (mysqli_num_rows($read) <= 12) {
         <div class="mt-12">
           <p>Assalamualaikum Wr. Wb.</p>
           <p>
-            Berikut adalah laporan pembayaran SPP tahun ajaran <?= $transaction['tahun_dibayar'] . 
-            "/" . ($transaction['tahun_dibayar'] + 1) ?> dari siswa yang dengan:
+            Berikut adalah laporan pembayaran SPP tahun ajaran <?= $transaction['tahun_dibayar'] .
+                                                                  "/" . ($transaction['tahun_dibayar'] + 1) ?> dari siswa yang dengan:
           </p>
         </div>
         <table class="no-border mt-12 w-100">
@@ -76,7 +76,7 @@ if (mysqli_num_rows($read) <= 12) {
           <tr>
             <td style="width: 20%;">Nominal SPP</td>
             <td style="width: 4%;">:</td>
-            <td><?= $transaction['nominal'] ?></td>
+            <td><?= "Rp. ".number_format($transaction['nominal'],0,',','.') ?></td>
           </tr>
         </table>
         <table class="print mt-16">
@@ -87,8 +87,8 @@ if (mysqli_num_rows($read) <= 12) {
             <th>Status</th>
           </thead>
           <tbody>
-          <?php
-          $query = "SELECT * FROM pembayaran
+            <?php
+            $query = "SELECT * FROM pembayaran
             INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
             INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
             INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
@@ -96,35 +96,35 @@ if (mysqli_num_rows($read) <= 12) {
             WHERE pembayaran.nisn = '$_GET[nisn]'
             LIMIT 0, 12
           ";
-          $read = mysqli_query($conn, $query);
-          for ($i = 1; $i <= 12; $i++) {
-            $data = mysqli_fetch_assoc($read);
+            $read = mysqli_query($conn, $query);
+            for ($i = 1; $i <= 12; $i++) {
+              $data = mysqli_fetch_assoc($read);
 
-            $months = [
-              'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
-              'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'
-            ];
-            $status = "Belum Lunas";
+              $months = [
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
+                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'
+              ];
+              $status = "Belum Lunas";
 
-            if (!empty($data)) {
-              $status = "Lunas";
-            }
-            
-            if ($i < 7) {
-              $year = $transaction['tahun_dibayar'];
-            } else {
-              $year = $transaction['tahun_dibayar'] + 1;
+              if (!empty($data)) {
+                $status = "Lunas";
+              }
+
+              if ($i < 7) {
+                $year = $transaction['tahun_dibayar'];
+              } else {
+                $year = $transaction['tahun_dibayar'] + 1;
+              }
+            ?>
+              <tr>
+                <td><?= $i ?></td>
+                <td><?= $months[($i - 1)] ?></td>
+                <td><?= $year ?></td>
+                <td><?= $status ?></td>
+              </tr>
+            <?php
             }
             ?>
-            <tr>
-              <td><?= $i ?></td>
-              <td><?= $months[($i - 1)] ?></td>
-              <td><?= $year ?></td>
-              <td><?= $status ?></td>
-            </tr>
-            <?php
-          }
-          ?>            
           </tbody>
         </table>
         <br><br>
@@ -138,15 +138,15 @@ if (mysqli_num_rows($read) <= 12) {
       </article>
     </main>
   </body>
-  
+
+  <script src="<?= $javascript ?>/utilities.js"></script>
   <script>
     window.print();
   </script>
 
   </html>
 <?php
-}
-else if (mysqli_num_rows($read) > 12 && mysqli_num_rows($read) <= 24) {
+} else if (mysqli_num_rows($read) > 12 && mysqli_num_rows($read) <= 24) {
   $query = "SELECT * FROM pembayaran
     INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
     INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
@@ -168,8 +168,8 @@ else if (mysqli_num_rows($read) > 12 && mysqli_num_rows($read) <= 24) {
     <title>
       Riwayat Pembayaran SPP
       <?=
-        $transaction['nama'] . " " . $transaction['tahun_dibayar'] . 
-        "/" . ($transaction['tahun_dibayar'] + 1) 
+      $transaction['nama'] . " " . $transaction['tahun_dibayar'] .
+        "/" . ($transaction['tahun_dibayar'] + 1)
       ?>
     </title>
     <link rel="stylesheet" href="<?= $css ?>">
@@ -184,8 +184,8 @@ else if (mysqli_num_rows($read) > 12 && mysqli_num_rows($read) <= 24) {
         <div class="mt-12">
           <p>Assalamualaikum Wr. Wb.</p>
           <p>
-            Berikut adalah laporan pembayaran SPP tahun ajaran <?= $transaction['tahun_dibayar'] . 
-            "/" . ($transaction['tahun_dibayar'] + 1) ?> dari siswa yang dengan:
+            Berikut adalah laporan pembayaran SPP tahun ajaran <?= $transaction['tahun_dibayar'] .
+                                                                  "/" . ($transaction['tahun_dibayar'] + 1) ?> dari siswa yang dengan:
           </p>
         </div>
         <table class="no-border mt-12 w-100">
@@ -202,7 +202,7 @@ else if (mysqli_num_rows($read) > 12 && mysqli_num_rows($read) <= 24) {
           <tr>
             <td style="width: 20%;">Nominal SPP</td>
             <td style="width: 4%;">:</td>
-            <td><?= $transaction['nominal'] ?></td>
+            <td><?= "Rp. ".number_format($transaction['nominal'],0,',','.') ?></td>
           </tr>
         </table>
         <table class="print mt-16">
@@ -213,8 +213,8 @@ else if (mysqli_num_rows($read) > 12 && mysqli_num_rows($read) <= 24) {
             <th>Status</th>
           </thead>
           <tbody>
-          <?php
-          $query = "SELECT * FROM pembayaran
+            <?php
+            $query = "SELECT * FROM pembayaran
             INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
             INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
             INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
@@ -222,35 +222,35 @@ else if (mysqli_num_rows($read) > 12 && mysqli_num_rows($read) <= 24) {
             WHERE pembayaran.nisn = '$_GET[nisn]'
             LIMIT 12, 12
           ";
-          $read = mysqli_query($conn, $query);
-          for ($i = 1; $i <= 12; $i++) {
-            $data = mysqli_fetch_assoc($read);
+            $read = mysqli_query($conn, $query);
+            for ($i = 1; $i <= 12; $i++) {
+              $data = mysqli_fetch_assoc($read);
 
-            $months = [
-              'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
-              'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'
-            ];
-            $status = "Belum Lunas";
+              $months = [
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
+                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'
+              ];
+              $status = "Belum Lunas";
 
-            if (!empty($data)) {
-              $status = "Lunas";
-            }
-            
-            if ($i < 7) {
-              $year = $transaction['tahun_dibayar'];
-            } else {
-              $year = $transaction['tahun_dibayar'] + 1;
+              if (!empty($data)) {
+                $status = "Lunas";
+              }
+
+              if ($i < 7) {
+                $year = $transaction['tahun_dibayar'];
+              } else {
+                $year = $transaction['tahun_dibayar'] + 1;
+              }
+            ?>
+              <tr>
+                <td><?= $i ?></td>
+                <td><?= $months[($i - 1)] ?></td>
+                <td><?= $year ?></td>
+                <td><?= $status ?></td>
+              </tr>
+            <?php
             }
             ?>
-            <tr>
-              <td><?= $i ?></td>
-              <td><?= $months[($i - 1)] ?></td>
-              <td><?= $year ?></td>
-              <td><?= $status ?></td>
-            </tr>
-            <?php
-          }
-          ?>            
           </tbody>
         </table>
         <br><br>
@@ -268,11 +268,10 @@ else if (mysqli_num_rows($read) > 12 && mysqli_num_rows($read) <= 24) {
   <script>
     window.print();
   </script>
-  
+
   </html>
 <?php
-}
-else if (mysqli_num_rows($read) > 24 && mysqli_num_rows($read) <= 36) {
+} else if (mysqli_num_rows($read) > 24 && mysqli_num_rows($read) <= 36) {
   $query = "SELECT * FROM pembayaran
     INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
     INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
@@ -294,8 +293,8 @@ else if (mysqli_num_rows($read) > 24 && mysqli_num_rows($read) <= 36) {
     <title>
       Riwayat Pembayaran SPP
       <?=
-        $transaction['nama'] . " " . $transaction['tahun_dibayar'] . 
-        "/" . ($transaction['tahun_dibayar'] + 1) 
+      $transaction['nama'] . " " . $transaction['tahun_dibayar'] .
+        "/" . ($transaction['tahun_dibayar'] + 1)
       ?>
     </title>
     <link rel="stylesheet" href="<?= $css ?>">
@@ -310,8 +309,8 @@ else if (mysqli_num_rows($read) > 24 && mysqli_num_rows($read) <= 36) {
         <div class="mt-12">
           <p>Assalamualaikum Wr. Wb.</p>
           <p>
-            Berikut adalah laporan pembayaran SPP tahun ajaran <?= $transaction['tahun_dibayar'] . 
-            "/" . ($transaction['tahun_dibayar'] + 1) ?> dari siswa yang dengan:
+            Berikut adalah laporan pembayaran SPP tahun ajaran <?= $transaction['tahun_dibayar'] .
+                                                                  "/" . ($transaction['tahun_dibayar'] + 1) ?> dari siswa yang dengan:
           </p>
         </div>
         <table class="no-border mt-12 w-100">
@@ -328,7 +327,7 @@ else if (mysqli_num_rows($read) > 24 && mysqli_num_rows($read) <= 36) {
           <tr>
             <td style="width: 20%;">Nominal SPP</td>
             <td style="width: 4%;">:</td>
-            <td><?= $transaction['nominal'] ?></td>
+            <td><?= "Rp. ".number_format($transaction['nominal'],0,',','.') ?></td>
           </tr>
         </table>
         <table class="print mt-16">
@@ -339,8 +338,8 @@ else if (mysqli_num_rows($read) > 24 && mysqli_num_rows($read) <= 36) {
             <th>Status</th>
           </thead>
           <tbody>
-          <?php
-          $query = "SELECT * FROM pembayaran
+            <?php
+            $query = "SELECT * FROM pembayaran
             INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
             INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
             INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
@@ -348,35 +347,35 @@ else if (mysqli_num_rows($read) > 24 && mysqli_num_rows($read) <= 36) {
             WHERE pembayaran.nisn = '$_GET[nisn]'
             LIMIT 12, 12
           ";
-          $read = mysqli_query($conn, $query);
-          for ($i = 1; $i <= 12; $i++) {
-            $data = mysqli_fetch_assoc($read);
+            $read = mysqli_query($conn, $query);
+            for ($i = 1; $i <= 12; $i++) {
+              $data = mysqli_fetch_assoc($read);
 
-            $months = [
-              'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
-              'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'
-            ];
-            $status = "Belum Lunas";
+              $months = [
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
+                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'
+              ];
+              $status = "Belum Lunas";
 
-            if (!empty($data)) {
-              $status = "Lunas";
-            }
-            
-            if ($i < 7) {
-              $year = $transaction['tahun_dibayar'];
-            } else {
-              $year = $transaction['tahun_dibayar'] + 1;
+              if (!empty($data)) {
+                $status = "Lunas";
+              }
+
+              if ($i < 7) {
+                $year = $transaction['tahun_dibayar'];
+              } else {
+                $year = $transaction['tahun_dibayar'] + 1;
+              }
+            ?>
+              <tr>
+                <td><?= $i ?></td>
+                <td><?= $months[($i - 1)] ?></td>
+                <td><?= $year ?></td>
+                <td><?= $status ?></td>
+              </tr>
+            <?php
             }
             ?>
-            <tr>
-              <td><?= $i ?></td>
-              <td><?= $months[($i - 1)] ?></td>
-              <td><?= $year ?></td>
-              <td><?= $status ?></td>
-            </tr>
-            <?php
-          }
-          ?>            
           </tbody>
         </table>
         <br><br>
@@ -390,12 +389,12 @@ else if (mysqli_num_rows($read) > 24 && mysqli_num_rows($read) <= 36) {
       </article>
     </main>
   </body>
-  
+
   <script>
     window.print();
   </script>
 
   </html>
 <?php
-} 
+}
 ?>

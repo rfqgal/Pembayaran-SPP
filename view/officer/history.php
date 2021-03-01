@@ -47,7 +47,12 @@ if (@$_SESSION['level'] != "officer") {
     </footer>
   </nav>
   <main>
-    <h1>Histori Pembayaran</h1>
+    <div class="flex">
+      <a onclick="window.history.back()" class="button-back">
+        <img src="<?= $img ?>/back.svg" alt="Back">
+      </a>      
+      <h1>Histori Pembayaran</h1>
+    </div>
     <article class="card">
       <header class="flex">
         <input type="text" name="search" id="search" onkeyup="search()" 
