@@ -17,7 +17,8 @@ $query = "SELECT * FROM pembayaran
   INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
   INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
   INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
-  WHERE pembayaran.id_pembayaran = '$_GET[payment_id]'
+  ORDER BY id_pembayaran DESC
+  LIMIT 0, 1
 ";
 $read = mysqli_query($conn, $query);
 @$transaction = mysqli_fetch_assoc($read);

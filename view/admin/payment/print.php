@@ -53,7 +53,7 @@ if (mysqli_num_rows($read) <= 12) {
     <main class="print">
       <article>
         <h1 class="t-center">SMK Negeri 1 Kepanjen</h1>
-        <h1 class="t-center mt-4">Cetak Pembayaran SPPku</h1>
+        <h1 class="t-center mt-4">Pembayaran SPPku</h1>
         <hr class="header">
         <div class="mt-12">
           <p>Assalamualaikum Wr. Wb.</p>
@@ -179,7 +179,7 @@ if (mysqli_num_rows($read) <= 12) {
     <main class="print">
       <article>
         <h1 class="t-center">SMK Negeri 1 Kepanjen</h1>
-        <h1 class="t-center mt-4">Cetak Pembayaran SPPku</h1>
+        <h1 class="t-center mt-4">Pembayaran SPPku</h1>
         <hr class="header">
         <div class="mt-12">
           <p>Assalamualaikum Wr. Wb.</p>
@@ -304,7 +304,7 @@ if (mysqli_num_rows($read) <= 12) {
     <main class="print">
       <article>
         <h1 class="t-center">SMK Negeri 1 Kepanjen</h1>
-        <h1 class="t-center mt-4">Cetak Pembayaran SPPku</h1>
+        <h1 class="t-center mt-4">Pembayaran SPPku</h1>
         <hr class="header">
         <div class="mt-12">
           <p>Assalamualaikum Wr. Wb.</p>

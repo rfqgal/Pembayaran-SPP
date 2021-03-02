@@ -33,7 +33,7 @@ const read = () => {
         <td>${formatRupiah(object.payment_total, "Rp. ")}</td>
         <td class="action-2">
           <a href="./receipt.php?payment_id=${object.payment_id}">
-            <button class="img">
+            <button class="secondary img">
               <img src="../../assets/img/button-print-20px.svg" alt="Edit">
             </button>
           </a>
@@ -206,7 +206,7 @@ const pay = (adminId) => {
   xhr.addEventListener("load", () => {
     if (xhr.status === 201) {
       alert(`Pembayaran SPP ${inputName} pada bulan ${inputMonth} telah dibuat!`);
-      window.location.href = "./index.php";
+      window.location.href = "./recent_receipt.php";
     } else {
       alert(`Pembayaran SPP ${inputName} pada bulan ${inputMonth} gagal dibuat!`);
     }
