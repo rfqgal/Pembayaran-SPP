@@ -27,7 +27,7 @@ check_login();
         <input type="text" name="id" id="inputId" autocomplete="off" required>
         <label class="mt-24" for="password">Password / NIS</label>
         <input type="password" name="password" id="inputPassword" autocomplete="off" required>
-        <input class="mt-88" type="submit" value="Login">
+        <input type="submit" value="Login">
       </form>
     </main>
     <footer>

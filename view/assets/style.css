@@ -119,7 +119,8 @@ h1 {
 
 .bg-login {
   background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('./img/background-login.jpg');
-  background-size: contain;
+  background-size: 100%;
+  background-position: center;
   padding: 92px 80px;
   height: 100%;
 }
@@ -163,6 +164,11 @@ main.login {
   box-shadow: 0 4px 64px 0 rgba(0, 0, 0, 0.5);
 }
 
+.login form {
+  height: 100%;
+  position: relative;
+}
+
 .login h1 {
   font-size: 48px;
   line-height: 48px;
@@ -180,6 +186,11 @@ label {
   font-size: 20px;
   font-family: Lato;
   width: 100%;
+}
+
+.login input[type="submit"] {
+  position: absolute;
+  bottom: 0;
 }
 
 #form input, #form select, #form button, #form textarea {
