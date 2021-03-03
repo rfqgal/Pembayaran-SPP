@@ -1,6 +1,40 @@
 const baseLink = "http://localhost/Pembayaran-SPP/app/administrator";
 
 const read = () => {
+  listObjects.innerHTML = "";
+
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", () => {
+    const responseJson = JSON.parse(xhr.responseText);
+
+    responseJson.records.forEach(object => {
+      listObjects.innerHTML += `
+      <tr class="listObject">
+        <td>${object.name}</td>
+        <td>${object.username}</td>
+        <td>${object.level}</td>
+        <td class="action-2">
+          <a href="./update.php?id=${object.id}">
+            <button class="warning img">
+              <img src="../../assets/img/button-update.svg" alt="Edit">
+            </button>
+          </a>
+          <button onclick="confirmDelete(
+            ${object.id},
+            'Apakah Anda yakin ingin menghapus akun ${object.name}?'
+            )" class="danger img">
+            <img src="../../assets/img/button-drop.svg" alt="Delete">
+          </button>
+        </td>
+      </tr>
+    `;
+    })
+  });
+  xhr.open("GET", `${baseLink}/read.php`);
+  xhr.send();
+}
+
+const find = () => {
   let input = document.getElementById("search");
   let find = input.value.toLowerCase();
   listObjects.innerHTML = "";
@@ -18,14 +52,14 @@ const read = () => {
         <td class="action-2">
           <a href="./update.php?id=${object.id}">
             <button class="warning img">
-              <img src="../../assets/img/button-edit.svg" alt="Edit">
+              <img src="../../assets/img/button-update.svg" alt="Edit">
             </button>
           </a>
           <button onclick="confirmDelete(
             ${object.id},
             'Apakah Anda yakin ingin menghapus akun ${object.name}?'
             )" class="danger img">
-            <img src="../../assets/img/button-delete.svg" alt="Delete">
+            <img src="../../assets/img/button-drop.svg" alt="Delete">
           </button>
         </td>
       </tr>

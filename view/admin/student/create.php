@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../../route.php');
+include_once('../../assets/php/route.php');
 $conn = mysqli_connect("localhost", "root", "", "pra-ukk");
 
 if (@$_SESSION['level'] != "admin") {
@@ -119,7 +119,7 @@ if (@$_SESSION['level'] != "admin") {
             while (@$tuition = mysqli_fetch_assoc($tuitions)) {
               ?>
               <option value="<?= $tuition['id_spp'] ?>">
-                <?= "Rp. ".number_format($tuition['nominal'],0,',','.')." (".$tuition['tahun'].")" ?>
+                <?= "Rp ".number_format($tuition['nominal'],0,',','.')." (".$tuition['tahun'].")" ?>
               </option>
               <?php
             }

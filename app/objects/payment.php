@@ -195,6 +195,7 @@ class Payment
       INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
       WHERE siswa.nisn LIKE ? OR nama LIKE ? 
       OR bulan_dibayar LIKE ? OR tahun_dibayar LIKE ? 
+      ORDER BY pembayaran.id_pembayaran DESC
     ";
 
     // Prepare Query Statement

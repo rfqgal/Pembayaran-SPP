@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../route.php');
+include('../assets/php/route.php');
 
 if (@$_SESSION['level'] != "officer") {
   echo "
@@ -55,8 +55,11 @@ if (@$_SESSION['level'] != "officer") {
     </div>
     <article class="card">
       <header class="flex">
-        <input type="text" name="search" id="search" onkeyup="search()" 
-        placeholder="Cari Nama Siswa, Petugas, NISN" autocomplete="off">
+        <input type="text" name="search" id="search"
+        placeholder="Cari data berdasarkan apapun" autocomplete="off">
+        <button id="btnSearch" class="img-search" onclick="search()">
+          <img src="<?= $img ?>/search-white.svg" alt="Search">
+        </button>
         <div class="right">
           <a href="./entry.php">
             <button>Entri Transaksi</button>
@@ -69,10 +72,10 @@ if (@$_SESSION['level'] != "officer") {
             <tr>
               <th>NISN</th>
               <th>Nama Siswa</th>
-              <th>Tanggal Bayar</th>
-              <th>Bulan Bayar</th>
-              <th>Tahun Bayar</th>
+              <th>Bulan SPP</th>
+              <th>Tahun SPP</th>
               <th>Jumlah Bayar</th>
+              <th>Tanggal Bayar</th>
             </tr>
           </thead>
           <tbody id="listObjects"></tbody>

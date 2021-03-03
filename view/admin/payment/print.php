@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../../route.php');
+include_once('../../assets/php/route.php');
 $conn = mysqli_connect("localhost", "root", "", "pra-ukk");
 
 if (@$_SESSION['level'] != "admin") {
@@ -76,7 +76,7 @@ if (mysqli_num_rows($read) <= 12) {
           <tr>
             <td style="width: 20%;">Nominal SPP</td>
             <td style="width: 4%;">:</td>
-            <td><?= "Rp. ".number_format($transaction['nominal'],0,',','.') ?></td>
+            <td><?= "Rp ".number_format($transaction['nominal'],0,',','.') ?></td>
           </tr>
         </table>
         <table class="print mt-16">
@@ -202,7 +202,7 @@ if (mysqli_num_rows($read) <= 12) {
           <tr>
             <td style="width: 20%;">Nominal SPP</td>
             <td style="width: 4%;">:</td>
-            <td><?= "Rp. ".number_format($transaction['nominal'],0,',','.') ?></td>
+            <td><?= "Rp ".number_format($transaction['nominal'],0,',','.') ?></td>
           </tr>
         </table>
         <table class="print mt-16">
@@ -327,7 +327,7 @@ if (mysqli_num_rows($read) <= 12) {
           <tr>
             <td style="width: 20%;">Nominal SPP</td>
             <td style="width: 4%;">:</td>
-            <td><?= "Rp. ".number_format($transaction['nominal'],0,',','.') ?></td>
+            <td><?= "Rp ".number_format($transaction['nominal'],0,',','.') ?></td>
           </tr>
         </table>
         <table class="print mt-16">

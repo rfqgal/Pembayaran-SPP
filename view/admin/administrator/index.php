@@ -1,15 +1,8 @@
 <?php
-include('../../route.php');
+include_once('../../assets/php/route.php');
+include('../../assets/php/function.php');
 
-session_start();
-if (@$_SESSION['level'] != "admin") {
-  echo "
-    <script>
-      alert('Anda tidak memiliki akses di halaman ini!');
-      window.location.href = '$login';
-    </script>
-  ";
-}
+// check_user("admin");
 ?>
 <html lang="en">
 
@@ -69,7 +62,7 @@ if (@$_SESSION['level'] != "admin") {
       <header class="flex">
         <input tabindex="1" type="text" name="search" id="search"
           placeholder="Cari Nama Pengguna, Nama, atau Level" autocomplete="off">
-        <button id="btnSearch" class="img-search" onclick="read()" tabindex="2">
+        <button id="btnSearch" class="img-search" onclick="find()" tabindex="2">
           <img src="<?= $img ?>/search-white.svg" alt="Search">
         </button>
         <div class="right">

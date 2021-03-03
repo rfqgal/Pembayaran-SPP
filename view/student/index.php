@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../route.php');
+include('../assets/php/route.php');
 
 if (@$_SESSION['level'] != "student") {
   echo "

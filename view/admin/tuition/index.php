@@ -1,15 +1,8 @@
 <?php
-session_start();
-include('../../route.php');
+include_once('../../assets/php/route.php');
+include('../../assets/php/function.php');
 
-if (@$_SESSION['level'] != "admin") {
-  echo "
-    <script>
-      alert('Anda tidak memiliki akses di halaman ini!');
-      window.location.href = '$login';
-    </script>
-  ";
-}
+check_user("admin");
 ?>
 <html lang="en">
 
@@ -69,7 +62,7 @@ if (@$_SESSION['level'] != "admin") {
       <header class="flex">
         <input tabindex="1" type="text" name="search" id="search"
           placeholder="Cari Tahun atau Nominal" autocomplete="off">
-        <button id="btnSearch" class="img-search" onclick="read()">
+        <button id="btnSearch" class="img-search" onclick="find()">
           <img src="<?= $img ?>/search-white.svg" alt="Search">
         </button>
         <div class="right">

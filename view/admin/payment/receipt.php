@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../../route.php');
+include_once('../../assets/php/route.php');
 $conn = mysqli_connect("localhost", "root", "", "pra-ukk");
 
 if (@$_SESSION['level'] != "admin") {
@@ -77,7 +77,7 @@ $read = mysqli_query($conn, $query);
         <tr>
           <td style="width: 20%;">Jumlah Pembayaran</td>
           <td style="width: 4%;">:</td>
-          <td><?= "Rp. ".number_format($transaction['jumlah_bayar'],0,',','.') ?></td>
+          <td><?= "Rp ".number_format($transaction['jumlah_bayar'],0,',','.') ?></td>
         </tr>
       </table>
       <hr>

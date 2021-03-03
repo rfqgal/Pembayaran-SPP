@@ -28,20 +28,20 @@ const read = () => {
         <td>${object.nisn}</td>
         <td>${object.student_name}</td>
         <td>${object.payment_date}</td>
-        <td>${object.payment_month}</td>
-        <td>${object.payment_year}</td>
-        <td>${formatRupiah(object.payment_total, "Rp. ")}</td>
+        <td>${object.month_paid}</td>
+        <td>${object.year_paid}</td>
+        <td>${formatRupiah(object.payment_total, "Rp ")}</td>
         <td class="action-2">
           <a href="./receipt.php?payment_id=${object.payment_id}">
             <button class="secondary img">
-              <img src="../../assets/img/button-print-20px.svg" alt="Edit">
+              <img src="../../assets/img/button-print.svg" alt="Edit">
             </button>
           </a>
           <button onclick="confirmDelete(
             ${object.payment_id}, 
-            'Apakah Anda yakin ingin menghapus pembayaran bulan ${object.payment_month} dari siswa ${object.student_name}?'
+            'Apakah Anda yakin ingin menghapus pembayaran bulan ${object.month_paid} dari siswa ${object.student_name}?'
             )" class="danger img">
-            <img src="../../assets/img/button-delete-20px.svg" alt="Delete">
+            <img src="../../assets/img/button-drop.svg" alt="Delete">
           </button>
         </td>
       </tr>
@@ -102,7 +102,7 @@ const readPagingEntry = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
+        <td>${formatRupiah(object.tuition, "Rp ")}</td>
         <td class="action-1">
           <a href="./transaction.php?nisn=${object.nisn}">
             <button>Bayar</button>
@@ -135,7 +135,7 @@ const readPagingPrint = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
+        <td>${formatRupiah(object.tuition, "Rp ")}</td>
         <td class="action-1">
           <a href="./print.php?nisn=${object.nisn}">
             <button class="secondary">Cetak</button>

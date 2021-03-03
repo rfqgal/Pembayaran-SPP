@@ -13,18 +13,18 @@ const read = () => {
       listObjects.innerHTML += `
       <tr class="listObject">
         <td>${object.year}</td>
-        <td>${formatRupiah(object.fee, "Rp. ")}</td>
+        <td>${formatRupiah(object.fee, "Rp ")}</td>
         <td class="action-2">
           <a href="./update.php?id=${object.id}">
             <button class="warning img">
-              <img src="../../assets/img/button-edit.svg" alt="Edit">
+              <img src="../../assets/img/button-update.svg" alt="Edit">
             </button>
           </a>
           <button onclick="confirmDelete(
             ${object.id}, 
             'Apakah Anda yakin ingin menghapus SPP Tahun ${object.year}?'
             )" class="danger img">
-            <img src="../../assets/img/button-delete.svg" alt="Delete">
+            <img src="../../assets/img/button-drop.svg" alt="Delete">
           </button>
         </td>
       </tr>

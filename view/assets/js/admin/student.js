@@ -18,18 +18,18 @@ const read = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
+        <td>${formatRupiah(object.tuition, "Rp ")}</td>
         <td class="action-2">
           <a href="./update.php?nisn=${object.nisn}">
             <button class="warning img">
-              <img src="../../assets/img/button-edit.svg" alt="Edit">
+              <img src="../../assets/img/button-update.svg" alt="Edit">
             </button>
           </a>
           <button onclick="confirmDelete(
             ${object.nisn}, 
             'Apakah Anda yakin ingin menghapus akun ${object.name}?'
             )" class="danger img">
-            <img src="../../assets/img/button-delete.svg" alt="Delete">
+            <img src="../../assets/img/button-drop.svg" alt="Delete">
           </button>
         </td>
       </tr>

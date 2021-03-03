@@ -26,10 +26,10 @@ const read = () => {
       <tr class="listObject">
         <td>${object.nisn}</td>
         <td>${object.student_name}</td>
+        <td>${object.month_paid}</td>
+        <td>${object.year_paid}</td>
+        <td>${formatRupiah(object.payment_total, "Rp ")}</td>
         <td>${object.payment_date}</td>
-        <td>${object.payment_month}</td>
-        <td>${object.payment_year}</td>
-        <td>${formatRupiah(object.payment_total, "Rp. ")}</td>
       </tr>
     `;
     })
@@ -56,7 +56,7 @@ const find = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
+        <td>${formatRupiah(object.tuition, "Rp ")}</td>
         <td class="action-1">
           <a href="./transaction.php?nisn=${object.nisn}">
             <button>Bayar</button>
@@ -88,7 +88,7 @@ const readPagingEntry = () => {
         <td>${object.grade}</td>
         <td>${object.address}</td>
         <td>${object.phone}</td>
-        <td>${formatRupiah(object.tuition, "Rp. ")}</td>
+        <td>${formatRupiah(object.tuition, "Rp ")}</td>
         <td class="action-1">
           <a href="./transaction.php?nisn=${object.nisn}">
             <button>Bayar</button>

@@ -7,7 +7,7 @@ $api = $base."/app";
 // View References
 $view = $base."/view";
 
-$login = $view."/index.html";
+$login = $view."/index.php";
 $logout = $view."/logout.php";
 
 // Student's References

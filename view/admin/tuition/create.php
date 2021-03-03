@@ -1,15 +1,8 @@
 <?php
-session_start();
-include('../../route.php');
+include_once('../../assets/php/route.php');
+include('../../assets/php/function.php');
 
-if (@$_SESSION['level'] != "admin") {
-  echo "
-    <script>
-      alert('Anda tidak memiliki akses di halaman ini!');
-      window.location.href = '$login';
-    </script>
-  ";
-}
+check_user("admin");
 ?>
 <html lang="en">
 

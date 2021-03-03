@@ -262,10 +262,7 @@ button.secondary {
 }
 
 button.secondary:hover {
-  padding: 8px 16px;
   background-color: #5CA3EF;
-  color: #FFF;
-  border: none;
 }
 
 input[type="submit"].warning, button.warning {
@@ -339,7 +336,7 @@ nav>section span {
 
 .links:hover {
   color: #333;
-  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.1);
 }
 
 .links:visited {
@@ -347,7 +344,7 @@ nav>section span {
 }
 
 .links.active {
-  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
 }
 
 .admin .links {

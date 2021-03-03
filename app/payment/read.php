@@ -36,8 +36,8 @@ if ($num > 0) {
       "nisn" => $nisn,
       "student_name" => $nama,
       "payment_date" => $tgl_bayar,
-      "payment_month" => $bulan_dibayar,
-      "payment_year" => $tahun_dibayar,
+      "month_paid" => $bulan_dibayar,
+      "year_paid" => $tahun_dibayar,
       "tuition_id" => $id_spp,
       "tuition_fee" => $nominal,
       "payment_total" => $jumlah_bayar

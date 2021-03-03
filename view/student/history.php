@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../route.php');
+include('../assets/php/route.php');
 
 if (@$_SESSION['level'] != "student") {
   echo "
@@ -34,7 +34,7 @@ if (@$_SESSION['level'] != "student") {
     </header>
     <section class="mt-24">
       <a class="flex links active" href="<?= $index_student ?>">
-        <img src="<?= $img ?>history-black.svg" alt="">
+        <img src="<?= $img ?>/history-black.svg" alt="">
         <span>Histori Pembayaran</span>
       </a>
       <a class="flex links" href="<?= $logout ?>">
@@ -53,9 +53,7 @@ if (@$_SESSION['level'] != "student") {
       </a>
       <h1>Histori Pembayaran</h1>
     </header>
-    <article class="card">
-      <div id="lists"></div>
-    </article>
+    <article id="history" class="card"></article>
   </main>
 </body>
 <script src="<?= $javascript ?>/student/payment.js"></script>
