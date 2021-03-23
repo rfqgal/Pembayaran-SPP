@@ -89,13 +89,13 @@ if (mysqli_num_rows($read) <= 12) {
           <tbody>
             <?php
             $query = "SELECT * FROM pembayaran
-            INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
-            INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
-            INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
-            INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
-            WHERE pembayaran.nisn = '$_GET[nisn]'
-            LIMIT 0, 12
-          ";
+              INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
+              INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
+              INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
+              INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
+              WHERE pembayaran.nisn = '$_GET[nisn]'
+              LIMIT 0, 12
+            ";
             $read = mysqli_query($conn, $query);
             for ($i = 1; $i <= 12; $i++) {
               $data = mysqli_fetch_assoc($read);
@@ -124,7 +124,12 @@ if (mysqli_num_rows($read) <= 12) {
               </tr>
             <?php
             }
+            $total = mysqli_num_rows($read) * $transaction['nominal'];
             ?>
+            <tr>
+              <th colspan="3">Total</th>
+              <th><?= "Rp ".number_format($total,0,',','.') ?></th>
+            </tr>
           </tbody>
         </table>
         <br><br>
@@ -215,13 +220,13 @@ if (mysqli_num_rows($read) <= 12) {
           <tbody>
             <?php
             $query = "SELECT * FROM pembayaran
-            INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
-            INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
-            INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
-            INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
-            WHERE pembayaran.nisn = '$_GET[nisn]'
-            LIMIT 12, 12
-          ";
+              INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
+              INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
+              INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
+              INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
+              WHERE pembayaran.nisn = '$_GET[nisn]'
+              LIMIT 12, 12
+            ";
             $read = mysqli_query($conn, $query);
             for ($i = 1; $i <= 12; $i++) {
               $data = mysqli_fetch_assoc($read);
@@ -250,7 +255,12 @@ if (mysqli_num_rows($read) <= 12) {
               </tr>
             <?php
             }
+            $total = mysqli_num_rows($read) * $transaction['nominal'];
             ?>
+            <tr>
+              <th colspan="3">Total</th>
+              <th><?= "Rp ".number_format($total,0,',','.') ?></th>
+            </tr>
           </tbody>
         </table>
         <br><br>
@@ -340,13 +350,13 @@ if (mysqli_num_rows($read) <= 12) {
           <tbody>
             <?php
             $query = "SELECT * FROM pembayaran
-            INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
-            INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
-            INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
-            INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
-            WHERE pembayaran.nisn = '$_GET[nisn]'
-            LIMIT 12, 12
-          ";
+              INNER JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
+              INNER JOIN siswa ON pembayaran.nisn = siswa.nisn
+              INNER JOIN spp ON pembayaran.id_spp = spp.id_spp
+              INNER JOIN kelas ON siswa.id_kelas = kelas.id_kelas
+              WHERE pembayaran.nisn = '$_GET[nisn]'
+              LIMIT 12, 12
+            ";
             $read = mysqli_query($conn, $query);
             for ($i = 1; $i <= 12; $i++) {
               $data = mysqli_fetch_assoc($read);
@@ -375,7 +385,12 @@ if (mysqli_num_rows($read) <= 12) {
               </tr>
             <?php
             }
+            $total = mysqli_num_rows($read) * $transaction['nominal'];
             ?>
+            <tr>
+              <th colspan="3">Total</th>
+              <th><?= "Rp ".number_format($total,0,',','.') ?></th>
+            </tr>
           </tbody>
         </table>
         <br><br>

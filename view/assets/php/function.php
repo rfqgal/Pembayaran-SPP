@@ -11,14 +11,16 @@ function check_login()
         window.location.href = 'http://localhost/Pembayaran-SPP/view/student/';
       </script>
     ";
-  } 
+  }
+
   if (@$_SESSION['level'] == "officer") {
     echo "
       <script>
         window.location.href = 'http://localhost/Pembayaran-SPP/view/officer/';
       </script>
     ";
-  } 
+  }
+  
   if (@$_SESSION['level'] == "admin") {
     echo "
       <script>

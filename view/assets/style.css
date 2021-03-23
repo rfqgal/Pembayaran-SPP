@@ -281,9 +281,17 @@ input[type="submit"].warning, button.warning {
   color: #FFF;
 }
 
+input[type="submit"].warning:hover, button.warning:hover {
+  background-color: #FFDA0A;
+}
+
 input[type="submit"].danger, button.danger {
   background-color: #EA1601;
   color: #FFF;
+}
+
+input[type="submit"].danger:hover, button.danger:hover {
+  background-color: #FF2F1F;
 }
 
 button.img {

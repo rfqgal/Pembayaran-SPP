@@ -32,6 +32,7 @@ const read = () => {
   });
   xhr.open("GET", `${baseLink}/read.php`);
   xhr.send();
+
 }
 
 const find = () => {
