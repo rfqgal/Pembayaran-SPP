@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('../../assets/php/function.php');
+include('../assets/php/function.php');
 include('../assets/php/route.php');
 $conn = mysqli_connect("localhost", "root", "", "pra-ukk");
 
