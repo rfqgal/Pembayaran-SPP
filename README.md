@@ -4,7 +4,7 @@
 Menggunakan Native Php dan Javascript
 1. Tanpa framework
 2. Tanpa library
-3. Tanpa CSS
+3. CSS murni
 
 ## Username dan Password Login:
 ### Admin:
